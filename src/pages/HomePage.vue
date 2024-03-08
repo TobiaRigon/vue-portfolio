@@ -10,9 +10,9 @@ export default {
 </script>
 
 <template>
-  <canvas class="webgl"></canvas>
+  <canvas ref="canvas" class="webgl"></canvas>
 
-  <section class="one">
+  <section class="one container">
     <div class="mycontainer">
       <div class="hero">
         <h2>Abs are cool. <span> Ut have you ever tried donuts?</span></h2>
@@ -27,7 +27,7 @@ export default {
     </div>
   </section>
 
-  <section class="two">
+  <section class="two container">
     <div class="mycontainer">
       <div class="hero">
         <h2>Abs are cool. <span> Ut have you ever tried donuts?</span></h2>
@@ -42,16 +42,23 @@ export default {
     </div>
   </section>
 
-  <section class="three">
+  <section class="three container">
     <h1>Happy Donut</h1>
   </section>
 </template>
 
 <style scoped lang="scss">
+.webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
 section {
   height: 100vh;
   width: 100vw;
   position: relative;
+
   .mycontainer {
     max-width: 1360px;
     width: 100%;
@@ -93,12 +100,14 @@ section {
 
 .one {
   .mycontainer {
+    margin: 0;
     grid-template-areas: "content ..";
   }
 }
 
 .two {
   .mycontainer {
+    margin: 0;
     grid-template-areas: ".. content";
   }
 }
