@@ -1,6 +1,9 @@
 import { createApp } from 'vue'
 import { createRouter , createWebHashHistory} from 'vue-router'
-import './style.css'
+import './style.scss'
+
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap';
 
 import MainLayout  from './layouts/MainLayout.vue'
 import HomePage from './pages/HomePage.vue'

@@ -12,6 +12,8 @@ export default {
 
 <template>
   <HeaderComponent />
-  <router-view />
+  <router-view class="router" />
   <FooterComponent />
 </template>
+
+<style lang="scss" scoped></style>
