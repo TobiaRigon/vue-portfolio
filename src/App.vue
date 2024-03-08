@@ -1,23 +1,13 @@
 <script>
+import ApiEvents from "./components/ApiEvents.vue";
 
-import ApiEvents from './components/ApiEvents.vue';
-
-export default{
-  components:{
+export default {
+  components: {
     ApiEvents,
-  }
-}
-
+  },
+};
 </script>
 
-<template>
+<template></template>
 
-  <ApiEvents />
-  
-</template>
-
-
-
-<style scoped>
-
-</style>
+<style scoped></style>

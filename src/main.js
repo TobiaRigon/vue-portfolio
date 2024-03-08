@@ -5,12 +5,12 @@ import './style.css'
 import MainLayout  from './layouts/MainLayout.vue'
 import HomePage from './pages/HomePage.vue'
 import AboutPage from './pages/AboutPage.vue'
-import TagsPage from './pages/TagsPage.vue'
+import WorkPage from './pages/WorkPage.vue'
 
 const routes = [
    {path: '/', component: HomePage} ,
    {path: '/about', component: AboutPage} ,
-   {path: '/tags', component: TagsPage} ,
+   {path: '/work', component: WorkPage} ,
 ]
 
 
