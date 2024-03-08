@@ -1,12 +1,4 @@
-<script>
-import ApiEvents from "../components/ApiEvents.vue";
-
-export default {
-  components: {
-    ApiEvents,
-  },
-};
-</script>
+<script></script>
 
 <template>
   <div>

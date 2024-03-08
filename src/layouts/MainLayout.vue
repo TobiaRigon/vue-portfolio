@@ -1,13 +1,17 @@
 <script>
-import ApiEvents from "../components/ApiEvents.vue";
+import HeaderComponent from "../components/HeaderComponent.vue";
+import FooterComponent from "../components/FooterComponent.vue";
 
 export default {
   components: {
-    ApiEvents,
+    HeaderComponent,
+    FooterComponent,
   },
 };
 </script>
 
 <template>
-  <ApiEvents />
+  <HeaderComponent />
+  <router-view />
+  <FooterComponent />
 </template>
