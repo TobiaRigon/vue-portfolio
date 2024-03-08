@@ -1,6 +1,17 @@
-<script></script>
+<script>
+import { setupThree } from "../js/threeSetup.js";
+
+export default {
+  mounted() {
+    const canvas = document.querySelector("canvas.webgl");
+    setupThree(canvas);
+  },
+};
+</script>
 
 <template>
+  <canvas class="webgl"></canvas>
+
   <section class="one">
     <div class="mycontainer">
       <div class="hero">
