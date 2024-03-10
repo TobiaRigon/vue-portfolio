@@ -30,7 +30,7 @@ export default {
 
 <style scoped>
 .icon {
-  margin-top: 1rem;
+  margin-top: 21px;
 }
 .name-logo {
   padding-top: 1rem;
