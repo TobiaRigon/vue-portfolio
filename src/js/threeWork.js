@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import gsap from 'gsap';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 export function setupThree(canvas) {
   // Scene
@@ -53,6 +54,8 @@ export function setupThree(canvas) {
     height: window.innerHeight,
   };
 
+
+
   // Camera
   const camera = new THREE.PerspectiveCamera(
     35,
@@ -76,6 +79,13 @@ export function setupThree(canvas) {
   // Raycaster
   const raycaster = new THREE.Raycaster();
   const mouse = new THREE.Vector2();
+
+    // Aggiungi OrbitControls
+const controls = new OrbitControls(camera, canvas);
+controls.enableDamping = true; // Abilita l'ammortizzazione del movimento della telecamera
+controls.dampingFactor = 0.1; // Fattore di ammortizzazione (valore compreso tra 0 e 1)
+controls.enableZoom = false; // Abilita lo zoom della telecamera
+
 
   // Funzione per gestire il clic del mouse
   function onMouseClick(event) {

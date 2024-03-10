@@ -10,7 +10,14 @@ export default {
 </script>
 
 <template>
-  <canvas ref="canvas" class="webgl"></canvas>
+  <section class="position-relative jumbo">
+    <h1 class="cta position-absolute">
+      Scroll down to see my latest projects
+      <i class="fa-solid fa-chevron-down"></i>
+    </h1>
+    <canvas ref="canvas" class="webgl"></canvas>
+  </section>
+
   <section class="container">
     <div class="project d-flex justify-content-center align-items-center">
       <div>
@@ -75,7 +82,19 @@ export default {
 </template>
 
 <style scoped>
-.project {
+.jumbo {
+  top: 0;
+  left: 0;
+}
+
+.cta {
+  top: 45%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+section {
   min-height: 100vh;
 }
 img {
