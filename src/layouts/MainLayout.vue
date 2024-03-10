@@ -12,7 +12,7 @@ export default {
 
 <template>
   <div class="wrapper">
-    <HeaderComponent />
+    <HeaderComponent :isHidden="headerHidden" />
     <router-view class="content" />
     <FooterComponent />
   </div>
@@ -22,12 +22,11 @@ export default {
 .wrapper {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Altezza minima della finestra del browser */
 }
 
 .content {
   flex: 1; /* Il contenuto si espande per riempire lo spazio rimanente */
-
+  min-height: 100vh; /* Altezza minima della finestra del browser */
   display: flex;
   justify-content: center; /* Centra orizzontalmente */
   align-items: center; /* Centra verticalmente */
