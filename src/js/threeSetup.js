@@ -5,12 +5,40 @@ export function setupThree(canvas) {
   // scene
   const scene = new THREE.Scene();
 
+
+  // scroll
+  const transformGeo = [
+    {
+      rotationZ: 0.45,
+      positionX: 1.5,
+      heightSegments: 3 // Numero di segmenti in altezza per la prima sezione
+    },
+    {
+      rotationZ: -2
+      ,
+      positionX: -1.7,
+      heightSegments: 4 // Numero di segmenti in altezza per la seconda sezione
+    },
+    {
+      rotationZ: -3.15,
+      positionX: 0,
+      heightSegments: 50 // Numero di segmenti in altezza per la terza sezione
+    },
+
+  ]
+
   // test cube
-  const cylinderGeometry = new THREE.CylinderGeometry(1, 1, 1.5, 3);
-  const cubeMaterial = new THREE.MeshBasicMaterial({
-    color: 0xff0000,
+    // Altezza dei segmenti iniziale
+    let heightSegments = transformGeo[0].heightSegments;
+
+  const cylinderGeometry = new THREE.CylinderGeometry(1.5, 1.5, 1.5, heightSegments);
+
+  const colors = ['#db3535', '#4ec439', '#39b2c4', '#dbcb35']; // Array di colori
+  let currentColorIndex  = 0;// Colore iniziale
+  const mainMaterial = new THREE.MeshBasicMaterial({
+    color: parseInt(colors[currentColorIndex].replace(/^#/, ''), 16),
   });
-  const mainGeo = new THREE.Mesh(cylinderGeometry, cubeMaterial);
+  const mainGeo = new THREE.Mesh(cylinderGeometry, mainMaterial);
 
   mainGeo.position.x = 1.5 
   mainGeo.rotation.x = Math.PI * 0.2 
@@ -20,21 +48,7 @@ export function setupThree(canvas) {
   scene.add(mainGeo);
 
   // scroll
-  const transformGeo = [
-    {
-      rotationZ: 0.45,
-      positionX: 1.5
-    },
-    {
-      rotationZ: -0.45,
-      positionX: -1.5
-    },
-    {
-      rotationZ: 0.0314,
-      positionX: 0
-    },
-
-  ]
+  
 
   let scrollY = window.scrollY
   let currentSection = 0
@@ -46,6 +60,17 @@ export function setupThree(canvas) {
 
     if (newSection != currentSection) {
       currentSection = newSection
+
+        // Calcola la posizione della sezione corrente
+    const sectionPosition = currentSection * sizes.height;
+
+    // Snappa lo scroll alla posizione della sezione
+    // window.scrollTo({
+    //   top: sectionPosition,
+    //   behavior: 'smooth' // Opzionale: aggiunge un'animazione di scorrimento fluida
+    // });
+
+   
 
       if (!!mainGeo) {
           gsap.to(
@@ -62,6 +87,19 @@ export function setupThree(canvas) {
                   x: transformGeo[currentSection].positionX
               }
           )
+
+
+          // Cambia il colore dell'oggetto
+          currentColorIndex = currentSection % colors.length; // Calcola l'indice del colore
+          mainGeo.material.color.set(colors[currentColorIndex]); // Imposta il colore
+
+
+           // Aggiorna il numero di segmenti in altezza
+        heightSegments = transformGeo[currentSection].heightSegments;
+        mainGeo.geometry.dispose(); // Rimuove la geometria corrente
+        mainGeo.geometry = new THREE.CylinderGeometry(1.5, 1.5, 1.5, heightSegments); // Crea nuova geometria con il nuovo numero di segmenti
+
+
 
           // gsap.to(
           //     sphereShadow.position, {
