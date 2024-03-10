@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import gsap from 'gsap';
 
 export function setupThree(canvas) {
   // scene
@@ -11,11 +12,72 @@ export function setupThree(canvas) {
   });
   const mainGeo = new THREE.Mesh(cylinderGeometry, cubeMaterial);
 
+  mainGeo.position.x = 1.5 
+  mainGeo.rotation.x = Math.PI * 0.2 
+  mainGeo.rotation.z = Math.PI * 0.15
+
   console.log(mainGeo);
   scene.add(mainGeo);
 
+  // scroll
+  const transformGeo = [
+    {
+      rotationZ: 0.45,
+      positionX: 1.5
+    },
+    {
+      rotationZ: -0.45,
+      positionX: -1.5
+    },
+    {
+      rotationZ: 0.0314,
+      positionX: 0
+    },
+
+  ]
+
+  let scrollY = window.scrollY
+  let currentSection = 0
+  
+  window.addEventListener('scroll', () =>{
+    scrollY = window.scrollY
+    const newSection = Math.round(scrollY / sizes.height)
+    console.log(newSection)
+
+    if (newSection != currentSection) {
+      currentSection = newSection
+
+      if (!!mainGeo) {
+          gsap.to(
+            mainGeo.rotation, {
+                  duration: 1.5,
+                  ease: 'power2.inOut',
+                  z: transformGeo[currentSection].rotationZ
+              }
+          )
+          gsap.to(
+            mainGeo.position, {
+                  duration: 1.5,
+                  ease: 'power2.inOut',
+                  x: transformGeo[currentSection].positionX
+              }
+          )
+
+          // gsap.to(
+          //     sphereShadow.position, {
+          //         duration: 1.5,
+          //         ease: 'power2.inOut',
+          //         x: transformGeo[currentSection].positionX - 0.2
+          //     }
+          // )
+      }
+  }
+  })
+
+
+
   // size
-  const size = {
+  const sizes = {
     width: window.innerWidth,
     height: window.innerHeight,
   };
@@ -23,7 +85,7 @@ export function setupThree(canvas) {
   // camera
   const camera = new THREE.PerspectiveCamera(
     35,
-    size.width / size.height,
+    sizes.width / sizes.height,
     0.1,
     1000
   );
@@ -49,7 +111,7 @@ scene.add(directionalLight)
     alpha: true,
   });
 
-  renderer.setSize(size.width, size.height);
+  renderer.setSize(sizes.width, sizes.height);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
   renderer.render(scene, camera);
@@ -64,10 +126,14 @@ const tick = () => {
     const deltaTime = elapsedTime - lastElapsedTime
     lastElapsedTime = elapsedTime
 
-    mainGeo.rotation.y = Math.sin(elapsedTime)
+    // mainGeo.rotation.y = Math.sin(elapsedTime)
+
+    if(!!mainGeo){
+      mainGeo.position.y = Math.sin(elapsedTime*0.5) * 0.1 -0.1
+    }
 
     // Render
-    console.log('tick')
+    // console.log('tick')
     renderer.render(scene, camera)
 
     // Call tick again on the next frame
