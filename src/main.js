@@ -23,6 +23,10 @@ const router = createRouter({
     routes,
 })
 
+router.afterEach(() => {
+    window.scrollTo(0, 0); // Sposta la finestra in cima alla pagina
+});
+
 const app = createApp(MainLayout)
 
 app.use(router)

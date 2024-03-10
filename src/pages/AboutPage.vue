@@ -50,6 +50,13 @@
 section {
   height: 100vh;
 }
+p,
+li,
+a {
+  color: black;
+  font-size: 18px;
+  font-weight: 400;
+}
 </style>
 
 <script></script>
