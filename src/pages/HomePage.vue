@@ -50,6 +50,7 @@ export default {
 <style scoped lang="scss">
 .webgl {
   position: fixed;
+  z-index: -2;
   top: 0;
   left: 0;
 }

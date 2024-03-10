@@ -12,7 +12,7 @@ export default {
 
 <template>
   <HeaderComponent />
-  <router-view class="router" />
+  <router-view />
   <FooterComponent />
 </template>
 
