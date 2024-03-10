@@ -21,7 +21,7 @@
           possibilities of web development and design.
         </p>
       </div>
-      <div class="col-11 my-3 col-lg-3 mx-5">
+      <div class="col-11 mt-4 col-lg-3 mx-5">
         <div>
           <h5>What i Like</h5>
           <ul>
@@ -48,7 +48,9 @@
 
 <style scoped>
 section {
-  height: 100vh;
+  min-height: 100vh;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 p,
 li,

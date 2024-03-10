@@ -12,17 +12,17 @@ export default {
 <template>
   <canvas ref="canvas" class="webgl"></canvas>
   <section class="container">
-    <div class="project d-flex justify-content-center align-items-center">
+    <div class="project my-10 d-flex justify-content-center align-items-center">
       <div>
-        <div class="d-flex g-2 justify-content-center">
-          <div class="titolo col-4">
+        <div class="d-flex flex-wrap justify-content-between">
+          <div class="titolo col-md-4">
             <h2>My Portfolio</h2>
             <h4>Showcasing My Passion and Skills</h4>
             <a href="https://github.com/TobiaRigon/vue-portfolio"
               ><i class="fa-brands fa-github"></i
             ></a>
           </div>
-          <div class="col-4 descrizione">
+          <div class="descrizione col-md-6">
             <p>
               My Portfolio is a digital showcase where I present myself and my
               personal projects. Using cutting-edge technologies like Vue.js and
@@ -43,21 +43,26 @@ export default {
       </div>
     </div>
 
-    <div class="project d-flex justify-content-center align-items-center">
+    <div class="project my-5 d-flex justify-content-center align-items-center">
       <div>
-        <div class="d-flex g-2 justify-content-center">
-          <div class="titolo col-4">
-            <h2>Titolo</h2>
-            <h4>Sottotitolo</h4>
+        <div class="d-flex flex-wrap justify-content-between">
+          <div class="titolo col-md-4">
+            <h2>My Portfolio</h2>
+            <h4>Showcasing My Passion and Skills</h4>
+            <a href="https://github.com/TobiaRigon/vue-portfolio"
+              ><i class="fa-brands fa-github"></i
+            ></a>
           </div>
-          <div class="col-4 descrizione">
+          <div class="descrizione col-md-6">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe,
-              alias culpa! Vel a quas numquam laudantium nesciunt, pariatur
-              cumque natus iure expedita ex in assumenda eius cum nulla non
-              esse?
+              My Portfolio is a digital showcase where I present myself and my
+              personal projects. Using cutting-edge technologies like Vue.js and
+              Three.js, I've created an interactive environment for users to
+              explore my work smoothly and intuitively. Vue.js ensures a
+              seamless and responsive browsing experience, while Three.js adds
+              an extra layer of engagement by bringing my projects to life in
+              3D.
             </p>
-            <a href="">gitHub</a>
           </div>
         </div>
 
@@ -69,21 +74,26 @@ export default {
       </div>
     </div>
 
-    <div class="project d-flex justify-content-center align-items-center">
+    <div class="project my-5 d-flex justify-content-center align-items-center">
       <div>
-        <div class="d-flex g-2 justify-content-center">
-          <div class="titolo col-4">
-            <h2>Titolo</h2>
-            <h4>Sottotitolo</h4>
+        <div class="d-flex flex-wrap justify-content-between">
+          <div class="titolo col-md-4">
+            <h2>My Portfolio</h2>
+            <h4>Showcasing My Passion and Skills</h4>
+            <a href="https://github.com/TobiaRigon/vue-portfolio"
+              ><i class="fa-brands fa-github"></i
+            ></a>
           </div>
-          <div class="col-4 descrizione">
+          <div class="descrizione col-md-6">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe,
-              alias culpa! Vel a quas numquam laudantium nesciunt, pariatur
-              cumque natus iure expedita ex in assumenda eius cum nulla non
-              esse?
+              My Portfolio is a digital showcase where I present myself and my
+              personal projects. Using cutting-edge technologies like Vue.js and
+              Three.js, I've created an interactive environment for users to
+              explore my work smoothly and intuitively. Vue.js ensures a
+              seamless and responsive browsing experience, while Three.js adds
+              an extra layer of engagement by bringing my projects to life in
+              3D.
             </p>
-            <a href="">gitHub</a>
           </div>
         </div>
 
@@ -99,9 +109,13 @@ export default {
 
 <style scoped>
 .project {
-  height: 100vh;
+  min-height: 100vh;
+}
+img {
+  max-width: 99%;
 }
 p {
   font-size: 18px;
+  margin: 10px;
 }
 </style>
