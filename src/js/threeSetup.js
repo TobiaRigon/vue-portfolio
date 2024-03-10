@@ -5,13 +5,14 @@ export function setupThree(canvas) {
   const scene = new THREE.Scene();
 
   // test cube
-  const cubeGeometry = new THREE.BoxGeometry(1, 1, 1, 1);
+  const cylinderGeometry = new THREE.CylinderGeometry(1, 1, 1.5, 3);
   const cubeMaterial = new THREE.MeshBasicMaterial({
     color: 0xff0000,
   });
-  const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+  const mainGeo = new THREE.Mesh(cylinderGeometry, cubeMaterial);
 
-  scene.add(cube);
+  console.log(mainGeo);
+  scene.add(mainGeo);
 
   // size
   const size = {
@@ -26,7 +27,7 @@ export function setupThree(canvas) {
     0.1,
     1000
   );
-  camera.position.z = 5;
+  camera.position.z = 8;
   scene.add(camera);
 
 //   lights
@@ -63,7 +64,7 @@ const tick = () => {
     const deltaTime = elapsedTime - lastElapsedTime
     lastElapsedTime = elapsedTime
 
-    cube.rotation.y = Math.sin(elapsedTime)
+    mainGeo.rotation.y = Math.sin(elapsedTime)
 
     // Render
     console.log('tick')
