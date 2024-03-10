@@ -55,7 +55,7 @@ export default {
         <div class="d-flex flex-wrap justify-content-between">
           <div class="titolo col-md-4">
             <h2>Lyricsmus</h2>
-            <h4>Showcasing My Passion and Skills</h4>
+            <h4>Vue.js Showcase Project</h4>
             <a href="https://github.com/TobiaRigon/proj-html-vuejs"
               ><i class="fa-brands fa-github"></i
             ></a>
@@ -92,6 +92,7 @@ export default {
   left: 50%;
   text-align: center;
   transform: translate(-50%, -50%);
+  user-select: none;
 }
 
 section {

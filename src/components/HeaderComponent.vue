@@ -19,7 +19,7 @@ export default {
       <div>
         <div class="d-flex">
           <ShapeIcon class="icon" />
-          <h5 class="name-logo">Tobia Rigon</h5>
+          <h4 class="name-logo">Tobia Rigon</h4>
         </div>
       </div>
       <NavComponent />

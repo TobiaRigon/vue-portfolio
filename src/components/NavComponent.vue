@@ -25,3 +25,9 @@ export default {
   name: "NavComponent",
 };
 </script>
+
+<style scoped>
+li {
+  font-size: 18px;
+}
+</style>
