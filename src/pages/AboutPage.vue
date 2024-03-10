@@ -1,9 +1,9 @@
 <template>
-  <section class="d-flex justify-content-center align-items-center">
-    <div class="container d-flex justify-content-between">
-      <div class="col-7 mx-5">
+  <section class="d-flex flex-wrap justify-content-center align-items-center">
+    <div class=".container flex-wrap d-flex justify-content-between">
+      <div class="col-10 col-lg-6 mx-5">
         <h1>Hey there!</h1>
-        <p>
+        <p class="mx-2">
           I'm Tobia, a passionate 3D enthusiast with a solid background in CGI.
           Based in Italy, I've recently embarked on an exciting journey into the
           world of web development. Through this site, you can join me as I
@@ -21,7 +21,7 @@
           possibilities of web development and design.
         </p>
       </div>
-      <div class="col-2 mx-5">
+      <div class="col-11 my-3 col-lg-3 mx-5">
         <div>
           <h5>What i Like</h5>
           <ul>
