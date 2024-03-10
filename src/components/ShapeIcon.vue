@@ -1,6 +1,11 @@
 <template>
   <div>
-    <div ref="shape" id="shape" class="triangle" @click="toggleShape"></div>
+    <div
+      ref="shape"
+      id="shape"
+      :class="currentShapeClass"
+      @click="toggleShape"
+    ></div>
   </div>
 </template>
 
@@ -9,8 +14,8 @@
   width: 20px;
   height: 20px;
   cursor: pointer;
-  /* margin-top: 1.2rem; */
   margin-right: 1rem;
+  transition: clip-path 1s ease; /* Aggiungi transizione alla proprietà clip-path */
 }
 
 .triangle {
@@ -31,18 +36,24 @@
 
 <script>
 export default {
+  data() {
+    return {
+      currentShape: "triangle",
+    };
+  },
+  computed: {
+    currentShapeClass() {
+      return this.currentShape;
+    },
+  },
   methods: {
     toggleShape() {
-      const shape = this.$refs.shape;
-      if (shape.classList.contains("triangle")) {
-        shape.classList.remove("triangle");
-        shape.classList.add("square");
-      } else if (shape.classList.contains("square")) {
-        shape.classList.remove("square");
-        shape.classList.add("circle");
+      if (this.currentShape === "triangle") {
+        this.currentShape = "square";
+      } else if (this.currentShape === "square") {
+        this.currentShape = "circle";
       } else {
-        shape.classList.remove("circle");
-        shape.classList.add("triangle");
+        this.currentShape = "triangle";
       }
     },
   },

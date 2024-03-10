@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section class="d-flex justify-content-center align-items-center">
     <div class="container d-flex justify-content-between">
       <div class="col-7 mx-5">
         <h1>Hey there!</h1>
@@ -43,9 +43,13 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
-<style scoped></style>
+<style scoped>
+section {
+  height: 100vh;
+}
+</style>
 
 <script></script>
