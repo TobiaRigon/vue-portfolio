@@ -1,6 +1,12 @@
 <script>
+import ShapeIcon from "../components/ShapeIcon.vue";
+
 export default {
   name: "HeaderComponent",
+
+  components: {
+    ShapeIcon,
+  },
 };
 </script>
 
@@ -9,7 +15,10 @@ export default {
     <!-- Menu -->
     <div class="d-flex justify-content-between w-100">
       <div>
-        <h5 class="name-logo">Tobia Rigon</h5>
+        <div class="d-flex">
+          <ShapeIcon class="icon" />
+          <h5 class="name-logo">Tobia Rigon</h5>
+        </div>
       </div>
       <div>
         <nav
@@ -37,6 +46,9 @@ export default {
 </template>
 
 <style scoped>
+.icon {
+  margin-top: 1rem;
+}
 .name-logo {
   padding-top: 1rem;
 }

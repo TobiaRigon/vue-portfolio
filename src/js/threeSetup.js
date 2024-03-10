@@ -32,7 +32,7 @@ export function setupThree(canvas) {
 
   const cylinderGeometry = new THREE.CylinderGeometry(1.5, 1.5, 1.5, heightSegments);
 
-  const colors = ['#db3535', '#4ec439', '#39b2c4', '#dbcb35']; // Array di colori
+  const colors = ['#db3535', '#4ec439', '#39b2c4']; // Array di colori
   let currentColorIndex  = 0;// Colore iniziale
   const mainMaterial = new THREE.MeshBasicMaterial({
     color: parseInt(colors[currentColorIndex].replace(/^#/, ''), 16),
