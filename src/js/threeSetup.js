@@ -9,17 +9,17 @@ export function setupThree(canvas) {
   // scroll
   const transformGeo = [
     {
-      rotationZ: 0.45,
+      rotationZ: 0,
       positionX: 1.5,
       heightSegments: 3 // Numero di segmenti in altezza per la prima sezione
     },
     {
-      rotationZ: -2,
+      rotationZ: -3,
       positionX: -1.7,
       heightSegments: 4 // Numero di segmenti in altezza per la seconda sezione
     },
     {
-      rotationZ: -3.5,
+      rotationZ: -6,
       positionX: 0,
       heightSegments: 80 // Numero di segmenti in altezza per la terza sezione
     },
