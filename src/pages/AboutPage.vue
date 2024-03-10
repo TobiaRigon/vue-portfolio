@@ -31,6 +31,7 @@
               >
             </li>
             <li>Auto UV</li>
+            <li>Bali</li>
           </ul>
         </div>
 
@@ -38,7 +39,8 @@
           <h5>What i'm Lerning</h5>
           <ul>
             <li>Three.js</li>
-            <li>Auto UV</li>
+            <li>Laravel</li>
+            <li>Mindfulness</li>
           </ul>
         </div>
       </div>
