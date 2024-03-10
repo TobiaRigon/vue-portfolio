@@ -14,13 +14,12 @@ export function setupThree(canvas) {
       heightSegments: 3 // Numero di segmenti in altezza per la prima sezione
     },
     {
-      rotationZ: -2
-      ,
+      rotationZ: -2,
       positionX: -1.7,
       heightSegments: 4 // Numero di segmenti in altezza per la seconda sezione
     },
     {
-      rotationZ: -3.15,
+      rotationZ: -3.5,
       positionX: 0,
       heightSegments: 50 // Numero di segmenti in altezza per la terza sezione
     },
@@ -69,6 +68,7 @@ export function setupThree(canvas) {
     //   top: sectionPosition,
     //   behavior: 'smooth' // Opzionale: aggiunge un'animazione di scorrimento fluida
     // });
+    
 
    
 
@@ -166,8 +166,10 @@ const tick = () => {
 
     // mainGeo.rotation.y = Math.sin(elapsedTime)
 
+
+    // respiro
     if(!!mainGeo){
-      mainGeo.position.y = Math.sin(elapsedTime*0.5) * 0.1 -0.1
+      mainGeo.position.y = Math.sin(elapsedTime*0.5) * 0.15 -0.15
     }
 
     // Render
