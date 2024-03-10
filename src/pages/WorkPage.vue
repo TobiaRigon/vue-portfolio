@@ -1,5 +1,16 @@
+<script>
+import { setupThree } from "../js/threeWork.js";
+
+export default {
+  mounted() {
+    const canvas = document.querySelector("canvas.webgl");
+    setupThree(canvas);
+  },
+};
+</script>
+
 <template>
-  <section class="jumbo"><h1>Jumbo</h1></section>
+  <canvas ref="canvas" class="webgl"></canvas>
   <section class="container">
     <div class="project d-flex justify-content-center align-items-center">
       <div>
