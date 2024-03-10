@@ -1,6 +1,6 @@
 <template>
   <section class="d-flex flex-wrap justify-content-center align-items-center">
-    <div class=".container flex-wrap d-flex justify-content-between">
+    <div class="container flex-wrap d-flex justify-content-between">
       <div class="col-10 col-lg-6 mx-5">
         <h1>Hey there!</h1>
         <p class="mx-2">
