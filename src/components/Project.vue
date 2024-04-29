@@ -13,6 +13,7 @@
           </p>
         </div>
       </div>
+      <!-- Carousel -->
       <div class="container">
         <swiper
           :spaceBetween="30"
@@ -81,22 +82,6 @@ export default {
 </script>
 
 <style scoped>
-.jumbo {
-  top: 0;
-  left: 0;
-}
-
-.cta {
-  top: 45%;
-  left: 50%;
-  text-align: center;
-  transform: translate(-50%, -50%);
-  user-select: none;
-}
-
-section {
-  min-height: 100vh;
-}
 img {
   max-width: 99%;
   box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.1);
@@ -110,13 +95,4 @@ a {
   color: black;
   font-size: 22px;
 }
-
-/* .swiper-container {
-  width: 50%;
-  height: 100%;
-}
-.swiper-slide img {
-  width: 50%;
-  height: auto;
-} */
 </style>
