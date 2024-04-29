@@ -13,23 +13,69 @@
           </p>
         </div>
       </div>
-
-      <img
-        class="mx-auto mt-5 d-block"
-        :src="project.image"
-        alt="Placeholder"
-      />
+      <div class="container">
+        <swiper
+          :spaceBetween="30"
+          :centeredSlides="true"
+          :autoplay="{
+            delay: 2500,
+            disableOnInteraction: false,
+          }"
+          :loop="true"
+          :navigation="true"
+          :modules="modules"
+          class="mySwiper"
+        >
+          <swiper-slide
+            class="my-5"
+            v-for="(image, index) in project.images"
+            :key="index"
+          >
+            <img :src="image" alt="Placeholder" />
+          </swiper-slide>
+        </swiper>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Autoplay, Navigation } from "swiper/modules";
+import "swiper/css";
+
 export default {
   props: {
     project: {
       type: Object,
       required: true,
     },
+  },
+  components: {
+    Swiper,
+    SwiperSlide,
+  },
+  setup() {
+    const onSwiper = (swiper) => {
+      console.log(swiper);
+    };
+    const onSlideChange = () => {
+      console.log("slide change");
+    };
+    return {
+      onSwiper,
+      onSlideChange,
+      modules: [Autoplay, Navigation],
+    };
+  },
+  data() {
+    return {
+      swiperOptions: {
+        autoplay: {
+          delay: 5000, // Delay in milliseconds
+        },
+      },
+    };
   },
 };
 </script>
@@ -64,4 +110,13 @@ a {
   color: black;
   font-size: 22px;
 }
+
+/* .swiper-container {
+  width: 50%;
+  height: 100%;
+}
+.swiper-slide img {
+  width: 50%;
+  height: auto;
+} */
 </style>
