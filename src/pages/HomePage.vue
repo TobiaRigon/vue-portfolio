@@ -21,15 +21,12 @@ export default {
             <!-- <h3>Embracing the World of Coding and Design</h3> -->
           </h2>
           <p>
-            Embarking on the path of web development has been a thrilling
-            adventure for me. From the early days of learning programming
-            languages to crafting intricate designs, every step has been a
-            lesson in creativity and problem-solving. Through my recent
-            projects, I've had the opportunity to delve into various aspects of
-            web development, honing my skills in front-end and back-end
-            development alike. Each project serves as a testament to my
-            dedication to mastering this craft and creating engaging digital
-            experiences for users.
+            My journey into web development has been exhilarating and
+            ever-evolving. From learning programming languages to crafting
+            intricate designs, each step has taught me creativity and
+            problem-solving. Through recent projects, I am honing skills in both
+            front-end and back-end development, demonstrating dedication to
+            mastering this craft and creating engaging digital experiences.
           </p>
         </div>
       </div>
@@ -45,15 +42,12 @@ export default {
             <!-- <h3>Navigating the Boundless Realm of Virtual Artistry</h3> -->
           </h2>
           <p>
-            Venturing into the realm of 3D exploration has unlocked a world of
-            endless possibilities. From modeling characters to crafting
-            immersive environments, I've found joy in every aspect of the
-            creative process. Through experimentation and practice, I've honed
-            my skills in 3D software and animation techniques, pushing the
-            boundaries of what's possible in the digital landscape. With each
-            project, I aim to not only showcase my technical proficiency but
-            also express my passion for storytelling and visual aesthetics in
-            the captivating realm of 3D artistry.
+            Exploring 3D has opened endless possibilities. From character
+            modeling to immersive environments, I find joy in every creative
+            aspect. Through practice, I've honed skills in 3D software and
+            animation, pushing digital boundaries. With each project, I aim to
+            showcase technical proficiency and express passion for storytelling
+            in the captivating realm of 3D artistry.
           </p>
         </div>
       </div>

@@ -19,6 +19,41 @@ export default {
   </section>
 
   <section class="container">
+    <div class="project d-flex my-5 justify-content-center align-items-center">
+      <div>
+        <div class="d-flex flex-wrap justify-content-between">
+          <div class="titolo col-md-4">
+            <h2>BoolBnB</h2>
+            <h4>Vue.js and Laravel Project</h4>
+            <a href="https://github.com/TobiaRigon/boolBnB"
+              ><i class="fa-brands fa-github"></i
+            ></a>
+          </div>
+          <div class="descrizione col-md-6">
+            <p>
+              Development of BoolBnB, a comprehensive web platform built using
+              Vue.js and Laravel. Collaborated within a team to create a
+              seamless user experience by designing and implementing a
+              responsive and dynamic interface. Leveraged advanced Vue.js
+              functionalities, including routing and state management, to ensure
+              optimal performance. The end product is a fully functional website
+              equipped with features such as apartment filtering, user
+              registration, apartment management (creation, editing), messaging
+              system per apartment, message viewing, and apartment sponsorship.
+              The focus remained on delivering a high-quality user experience
+              throughout the development process.
+            </p>
+          </div>
+        </div>
+
+        <img
+          class="mx-auto mt-5 d-block"
+          src="../img/BoolBnB_BE.png"
+          alt="Placeholder"
+        />
+      </div>
+    </div>
+
     <div class="project d-flex justify-content-center align-items-center">
       <div>
         <div class="d-flex flex-wrap justify-content-between">
