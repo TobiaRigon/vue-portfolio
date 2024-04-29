@@ -1,7 +1,17 @@
 <script>
 import { setupThree } from "../js/threeWork.js";
+import Project from "../components/Project.vue";
+import projects from "../js/projects.js";
 
 export default {
+  components: {
+    Project,
+  },
+  data() {
+    return {
+      projects: projects,
+    };
+  },
   mounted() {
     const canvas = document.querySelector("canvas.webgl");
     setupThree(canvas);
@@ -19,13 +29,15 @@ export default {
   </section>
 
   <section class="container">
-    <div class="project d-flex my-5 justify-content-center align-items-center">
+    <Project v-for="project in projects" :key="index" :project="project" />
+
+    <!-- <div class="project d-flex my-5 justify-content-center align-items-center">
       <div>
         <div class="d-flex flex-wrap justify-content-between">
           <div class="titolo col-md-4">
             <h2>BoolBnB</h2>
             <h4>Vue.js and Laravel Project</h4>
-            <a href="https://github.com/TobiaRigon/boolBnB"
+            <a href="https://github.com/TobiaRigon/vue-portfolio"
               ><i class="fa-brands fa-github"></i
             ></a>
           </div>
@@ -112,7 +124,7 @@ export default {
           alt="Placeholder"
         />
       </div>
-    </div>
+    </div> -->
   </section>
 </template>
 
