@@ -5,20 +5,22 @@
         <h1>Hey there!</h1>
         <p class="mx-2">
           I'm Tobia, a passionate 3D enthusiast with a solid background in CGI.
-          Based in Italy, I've recently embarked on an exciting journey into the
-          world of web development. Through this site, you can join me as I
-          navigate this new terrain and document my progress. As a former CGI
-          artist, I've honed my skills in crafting immersive digital
-          experiences, and now, as a junior web developer, I'm eager to
-          translate that creativity into the realm of web design and
-          development. My fascination with shapes, textures, and storytelling
-          fuels my quest to master the art of coding and design in the digital
-          landscape. When I'm not coding or experimenting with new technologies,
-          you can find me exploring the outdoors or indulging in my love for
-          gaming. From hiking trails to virtual worlds, I find inspiration in
-          every corner of life. Thanks for stopping by my portfolio! Let's
-          embark on this journey together as we explore the endless
-          possibilities of web development and design.
+          Based in Italy, I’ve transitioned into the world of web development
+          and IT, where I now work full-time in the luxury fashion industry.
+          Over the past year, I’ve been involved in developing and maintaining
+          business-critical systems, including building a custom PHP-based
+          integration between Lectra Kubix Link (PLM) and Microsoft NAV 365
+          (ERP). Through this site, you can follow my journey as I continue to
+          evolve as a developer, combining creativity with technical
+          problem-solving. My foundation in CGI taught me how to craft immersive
+          visual experiences—skills I now bring into web development, whether
+          designing engaging user interfaces or building smart backend logic.
+          When I'm not coding, debugging, or diving into new technologies,
+          you’ll find me outdoors, gaming, or exploring the intersection between
+          art and tech. From 3D graphics to web systems, I’m driven by a deep
+          curiosity and the desire to build things that work—and look—great.
+          Thanks for stopping by my portfolio. Let’s explore the ever-evolving
+          world of tech and design together!
         </p>
       </div>
       <div class="col-11 mt-4 col-lg-3 mx-5">
@@ -32,6 +34,7 @@
             </li>
             <li>Auto UV</li>
             <li>Bali</li>
+            <li>Self-awareness</li>
           </ul>
         </div>
 
