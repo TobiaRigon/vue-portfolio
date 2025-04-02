@@ -5,7 +5,9 @@
         <div class="titolo col-md-4">
           <h2>{{ project.title }}</h2>
           <h4>{{ project.technology }}</h4>
-          <a :href="project.githubUrl"><i class="fa-brands fa-github"></i></a>
+          <a v-if="project.githubUrl" :href="project.githubUrl"
+            ><i class="fa-brands fa-github"></i
+          ></a>
         </div>
         <div class="descrizione col-md-6">
           <p>

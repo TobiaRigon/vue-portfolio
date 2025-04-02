@@ -21,12 +21,13 @@ export default {
             <!-- <h3>Embracing the World of Coding and Design</h3> -->
           </h2>
           <p>
-            My journey into web development has been exhilarating and
-            ever-evolving. From learning programming languages to crafting
-            intricate designs, each step has taught me creativity and
-            problem-solving. Through recent projects, I am honing skills in both
-            front-end and back-end development, demonstrating dedication to
-            mastering this craft and creating engaging digital experiences.
+            My journey into web development has been dynamic and fulfilling. Now
+            working as a developer and IT specialist in the luxury fashion
+            industry, I focus on creating and maintaining digital tools that
+            support complex workflows. From coding interfaces to building system
+            integrations, I continue to sharpen my skills in both front-end and
+            back-end development—always driven by creativity and a desire to
+            build meaningful digital experiences.
           </p>
         </div>
       </div>
@@ -42,12 +43,12 @@ export default {
             <!-- <h3>Navigating the Boundless Realm of Virtual Artistry</h3> -->
           </h2>
           <p>
-            Exploring 3D has opened endless possibilities. From character
-            modeling to immersive environments, I find joy in every creative
-            aspect. Through practice, I've honed skills in 3D software and
-            animation, pushing digital boundaries. With each project, I aim to
-            showcase technical proficiency and express passion for storytelling
-            in the captivating realm of 3D artistry.
+            My background in 3D continues to influence how I approach design and
+            problem-solving. From character modeling to immersive environments,
+            I’ve developed a deep appreciation for visual storytelling. Though
+            my focus has shifted to development, I still draw on those 3D
+            foundations to bring a unique perspective to the digital
+            space—blending form, function, and imagination.
           </p>
         </div>
       </div>
