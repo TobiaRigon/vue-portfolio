@@ -4,7 +4,7 @@ const projects = [
       technology: 'PHP Integration Project',
       //githubUrl: '', 
       description: 'Development of a bidirectional synchronization system between Lectra Kubix Link (PLM) and Microsoft NAV 365 (ERP), using PHP, REST APIs, and webhooks. The project involved handling data consistency and real-time updates across both platforms. I was responsible for back-end development and system integration, ensuring robust communication between the two environments. This work significantly improved internal workflows and data accuracy.',
-      images: ['./src/img/sync1.png', './src/img/sync2.png', './src/img/sync3.png'] // replace with actual images if available
+      images: ['./src/img/Sync1.png', './src/img/Sync2.png'] // replace with actual images if available
     },  
     {
       title: 'BoolBnB',
