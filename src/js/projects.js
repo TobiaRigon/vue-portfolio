@@ -5,7 +5,14 @@ const projects = [
       //githubUrl: '', 
       description: 'Development of a bidirectional synchronization system between Lectra Kubix Link (PLM) and Microsoft NAV 365 (ERP), using PHP, REST APIs, and webhooks. The project involved handling data consistency and real-time updates across both platforms. I was responsible for back-end development and system integration, ensuring robust communication between the two environments. This work significantly improved internal workflows and data accuracy.',
       images: ['./Sync1.png', './Sync2.png'] // replace with actual images if available
-    },  
+    }, 
+    {
+      title: "Spotify Auto Playlist",
+      technology: "Python Automation Project",
+      githubUrl: "https://github.com/TobiaRigon/Spotify_Auto_Playlist",
+      description: "Development of a Python script that automates the creation and updating of a Spotify playlist using the Spotify Web API and the Spotipy library. The project involves authenticating with Spotify's API, managing user credentials securely, and programmatically adding predefined tracks to a playlist. This automation enhances user experience by streamlining playlist management.",
+      images: ["./Spotify1.png", "./Spotify2.png"] // Replace with actual images if available
+    },     
     {
       title: 'BoolBnB',
       technology: 'Vue.js and Laravel Project',
