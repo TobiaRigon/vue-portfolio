@@ -16,11 +16,35 @@
           visual experiences—skills I now bring into web development, whether
           designing engaging user interfaces or building smart backend logic.
           When I'm not coding, debugging, or diving into new technologies,
-          you’ll find me outdoors, gaming, or exploring the intersection between
-          art and tech. From 3D graphics to web systems, I’m driven by a deep
-          curiosity and the desire to build things that work—and look—great.
-          Thanks for stopping by my portfolio. Let’s explore the ever-evolving
-          world of tech and design together!
+          you’ll find me outdoors, or exploring the intersection between art and
+          tech. From 3D graphics to web systems, I’m driven by a deep curiosity
+          and the desire to build things that work—and look—great. Thanks for
+          stopping by my portfolio. Let’s explore the ever-evolving world of
+          tech and design together!
+        </p>
+        <h1>My Approach to Programming in the Age of AI</h1>
+        <p class="mx-2">
+          Entering the programming world in recent years means I’ve grown
+          alongside the rise of AI. From the beginning, I’ve seen it not as a
+          threat, but as a powerful tool—something to understand, experiment
+          with, and integrate into my daily workflow. I don’t claim to master
+          any specific language, though I have more experience with PHP,
+          JavaScript, and Vue. My focus is on understanding logic, systems, and
+          problem-solving over syntax. I believe language-specific skills will
+          become increasingly fluid as tools evolve, and adaptability will
+          matter more than memorization. That said, I don’t rely blindly on AI.
+          I use it the same way seasoned developers use Stack Overflow or
+          documentation: to learn faster, validate ideas, and avoid wasting time
+          on what doesn’t need to be reinvented. Some say AI is ruining
+          development. That’s like saying the typewriter ruined handwriting, or
+          that Google destroyed learning because we stopped memorizing dates.
+          Tools don’t make people lazy—people do. What matters is how you use
+          them. I believe that knowing how to use AI effectively is a skill like
+          any other—it takes time, practice, and critical thinking. Those who
+          rely on it blindly, or reject it completely, will both be left behind.
+          The future belongs to those who can combine human insight with smart,
+          evolving tools. My goal is to write clean, purposeful code and grow
+          every day, combining reasoning with modern resources.
         </p>
       </div>
       <div class="col-11 mt-4 col-lg-3 mx-5">
@@ -34,6 +58,7 @@
             </li>
             <li>Auto UV</li>
             <li>Bali</li>
+            <li>Obsidian</li>
             <li>Self-awareness</li>
           </ul>
         </div>
@@ -41,7 +66,9 @@
         <div>
           <h5>What i'm Lerning</h5>
           <ul>
-            <li>Three.js</li>
+            <li>Microsoft NAV 365</li>
+            <li>Microsoft 365 Admin & Licensing</li>
+            <li>System Integration (APIs & Webhooks)</li>
             <li>Laravel</li>
             <li>Mindfulness</li>
           </ul>
