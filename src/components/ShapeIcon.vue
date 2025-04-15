@@ -46,6 +46,18 @@ export default {
       return this.currentShape;
     },
   },
+  watch: {
+    "$route.path"(newPath) {
+      if (newPath.includes("about")) {
+        this.currentShape = "square";
+      } else if (newPath.includes("work")) {
+        this.currentShape = "circle";
+      } else {
+        this.currentShape = "triangle";
+      }
+      this.updateFavicon();
+    },
+  },
   methods: {
     toggleShape() {
       if (this.currentShape === "triangle") {
@@ -65,10 +77,8 @@ export default {
       canvas.height = 64;
       const ctx = canvas.getContext("2d");
 
-      // Pulisce
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Disegna la forma attuale
       switch (this.currentShape) {
         case "triangle":
           ctx.fillStyle = "#db3535";
@@ -105,7 +115,7 @@ export default {
     },
   },
   mounted() {
-    this.updateFavicon(); // Imposta la favicon iniziale
+    this.updateFavicon(); // favicon iniziale
   },
 };
 </script>
