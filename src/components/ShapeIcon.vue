@@ -55,7 +55,57 @@ export default {
       } else {
         this.currentShape = "triangle";
       }
+
+      this.updateFavicon();
     },
+
+    updateFavicon() {
+      const canvas = document.createElement("canvas");
+      canvas.width = 64;
+      canvas.height = 64;
+      const ctx = canvas.getContext("2d");
+
+      // Pulisce
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Disegna la forma attuale
+      switch (this.currentShape) {
+        case "triangle":
+          ctx.fillStyle = "#db3535";
+          ctx.beginPath();
+          ctx.moveTo(32, 0);
+          ctx.lineTo(0, 64);
+          ctx.lineTo(64, 64);
+          ctx.closePath();
+          ctx.fill();
+          break;
+
+        case "square":
+          ctx.fillStyle = "#4ec439";
+          ctx.fillRect(0, 0, 64, 64);
+          break;
+
+        case "circle":
+          ctx.fillStyle = "#39b2c4";
+          ctx.beginPath();
+          ctx.arc(32, 32, 32, 0, Math.PI * 2);
+          ctx.fill();
+          break;
+      }
+
+      const url = canvas.toDataURL("image/png");
+
+      let link = document.querySelector("link[rel~='icon']");
+      if (!link) {
+        link = document.createElement("link");
+        link.rel = "icon";
+        document.head.appendChild(link);
+      }
+      link.href = url;
+    },
+  },
+  mounted() {
+    this.updateFavicon(); // Imposta la favicon iniziale
   },
 };
 </script>
