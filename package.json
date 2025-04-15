@@ -9,11 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueuse/head": "^2.0.0",
     "bootstrap": "^5.3.3",
     "gsap": "^3.12.5",
     "swiper": "^11.2.6",
     "three": "^0.162.0",
     "vue": "^3.4.19",
+    "vue-meta": "^2.4.0",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
