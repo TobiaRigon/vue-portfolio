@@ -10,11 +10,13 @@ import MainLayout  from './layouts/MainLayout.vue'
 import HomePage from './pages/HomePage.vue'
 import AboutPage from './pages/AboutPage.vue'
 import WorkPage from './pages/WorkPage.vue'
+import DevOpsPage from './pages/DevOpsPage.vue';
 
 const routes = [
    {path: '/', component: HomePage} ,
    {path: '/about', component: AboutPage} ,
    {path: '/work', component: WorkPage} ,
+   { path: '/devops', component: DevOpsPage },
 ]
 
 
