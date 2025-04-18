@@ -48,69 +48,54 @@ export function setupThree(canvas) {
 
   // scroll
   
+  let currentSection = 0;
 
-  let scrollY = window.scrollY
-  let currentSection = 0
+  const sectionEls = document.querySelectorAll("section");
   
-  window.addEventListener('scroll', () =>{
-    scrollY = window.scrollY
-    const newSection = Math.round(scrollY / sizes.height)
-    console.log(newSection)
-
-    if (newSection != currentSection) {
-      currentSection = newSection
-
-        // Calcola la posizione della sezione corrente
-    const sectionPosition = currentSection * sizes.height;
-
-    // Snappa lo scroll alla posizione della sezione
-    // window.scrollTo({
-    //   top: sectionPosition,
-    //   behavior: 'smooth' // Opzionale: aggiunge un'animazione di scorrimento fluida
-    // });
-    
-
-   
-
-      if (!!mainGeo) {
-          gsap.to(
-            mainGeo.rotation, {
-                  duration: 1.5,
-                  ease: 'power2.inOut',
-                  z: transformGeo[currentSection].rotationZ
-              }
-          )
-          gsap.to(
-            mainGeo.position, {
-                  duration: 1.5,
-                  ease: 'power2.inOut',
-                  x: transformGeo[currentSection].positionX
-              }
-          )
-
-
-          // Cambia il colore dell'oggetto
-          currentColorIndex = currentSection % colors.length; // Calcola l'indice del colore
-          mainGeo.material.color.set(colors[currentColorIndex]); // Imposta il colore
-
-
-           // Aggiorna il numero di segmenti in altezza
-        heightSegments = transformGeo[currentSection].heightSegments;
-        mainGeo.geometry.dispose(); // Rimuove la geometria corrente
-        mainGeo.geometry = new THREE.CylinderGeometry(1.5, 1.5, 1.5, heightSegments); // Crea nuova geometria con il nuovo numero di segmenti
-
-
-
-          // gsap.to(
-          //     sphereShadow.position, {
-          //         duration: 1.5,
-          //         ease: 'power2.inOut',
-          //         x: transformGeo[currentSection].positionX - 0.2
-          //     }
-          // )
-      }
-  }
-  })
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id; // es. "section-1"
+          const index = parseInt(id.split("-")[1]); // es. 1
+          if (index !== currentSection) {
+            currentSection = index;
+  
+            // Applica le animazioni come prima
+            if (!!mainGeo) {
+              gsap.to(mainGeo.rotation, {
+                duration: 1.5,
+                ease: "power2.inOut",
+                z: transformGeo[currentSection].rotationZ,
+              });
+  
+              gsap.to(mainGeo.position, {
+                duration: 1.5,
+                ease: "power2.inOut",
+                x: transformGeo[currentSection].positionX,
+              });
+  
+              // Cambia colore
+              currentColorIndex = currentSection % colors.length;
+              mainGeo.material.color.set(colors[currentColorIndex]);
+  
+              // Cambia segmenti
+              heightSegments = transformGeo[currentSection].heightSegments;
+              mainGeo.geometry.dispose();
+              mainGeo.geometry = new THREE.CylinderGeometry(1.5, 1.5, 1.5, heightSegments);
+            }
+          }
+        }
+      });
+    },
+    {
+      root: null,
+      threshold: 0.6, // Trigger quando il 60% è visibile
+    }
+  );
+  
+  sectionEls.forEach((el) => observer.observe(el));
+  
 
 
 
