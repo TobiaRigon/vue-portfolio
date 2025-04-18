@@ -1,5 +1,5 @@
 <script>
-import { setupThree } from "../js/threeSetup.js";
+import { setupThree } from "../../js/threeSetup.js";
 
 export default {
   mounted() {
@@ -18,17 +18,19 @@ export default {
         <div class="col-lg-6">
           <div class="hero">
             <h2>
-              Unveiling My Journey in Web Development.
+              Scopri il mio percorso nello sviluppo web.
               <!-- <h3>Embracing the World of Coding and Design</h3> -->
             </h2>
             <p>
-              My journey into web development has been dynamic and fulfilling.
-              Now working as a developer and IT specialist in the luxury fashion
-              industry, I focus on creating and maintaining digital tools that
-              support complex workflows. From coding interfaces to building
-              system integrations, I continue to sharpen my skills in both
-              front-end and back-end development—always driven by creativity and
-              a desire to build meaningful digital experiences.
+              Il mio percorso nello sviluppo web è stato dinamico e
+              gratificante. Ora lavoro come sviluppatore e specialista IT nel
+              settore della moda di lusso, dove mi occupo della creazione e
+              manutenzione di strumenti digitali che supportano flussi di lavoro
+              complessi. Dalla programmazione di interfacce alla realizzazione
+              di integrazioni tra sistemi, continuo ad affinare le mie
+              competenze sia nel front-end che nel back-end — guidato sempre
+              dalla creatività e dalla voglia di costruire esperienze digitali
+              significative.
             </p>
           </div>
         </div>
@@ -40,16 +42,17 @@ export default {
         <div class="col-lg-6">
           <div class="hero">
             <h2>
-              Exploring the Depths of 3D Creation.
+              Esplorando le profondità della creazione 3D.
               <!-- <h3>Navigating the Boundless Realm of Virtual Artistry</h3> -->
             </h2>
             <p>
-              My background in 3D continues to influence how I approach design
-              and problem-solving. From character modeling to immersive
-              environments, I’ve developed a deep appreciation for visual
-              storytelling. Though my focus has shifted to development, I still
-              draw on those 3D foundations to bring a unique perspective to the
-              digital space—blending form, function, and imagination.
+              Il mio background nel 3D continua a influenzare il mio approccio
+              al design e alla risoluzione dei problemi. Dalla modellazione di
+              personaggi alla creazione di ambienti immersivi, ho sviluppato una
+              forte sensibilità per la narrazione visiva. Anche se ora il mio
+              focus principale è lo sviluppo, traggo ancora ispirazione da
+              quelle basi 3D per portare una prospettiva unica nel mondo
+              digitale — fondendo forma, funzione e immaginazione.
             </p>
           </div>
         </div>
@@ -57,7 +60,7 @@ export default {
     </section>
 
     <section id="section-2" class="three container">
-      <h1>Forging Forward</h1>
+      <h1>Guardando Avanti</h1>
     </section>
   </div>
 </template>

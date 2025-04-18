@@ -25,20 +25,34 @@
           class="navbar-nav ms-auto text-end align-items-end flex-column flex-md-row"
         >
           <li class="nav-item">
-            <router-link to="/" class="nav-link">Home</router-link>
+            <router-link :to="`/${lang}`" class="nav-link">Home</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/work" class="nav-link">Work</router-link>
+            <router-link :to="`/${lang}/work`" class="nav-link"
+              >Work</router-link
+            >
           </li>
           <li class="nav-item">
-            <router-link to="/about" class="nav-link">About</router-link>
+            <router-link :to="`/${lang}/about`" class="nav-link"
+              >About</router-link
+            >
           </li>
           <li class="nav-item">
-            <router-link to="/devops" class="nav-link">DevOps</router-link>
+            <router-link :to="`/${lang}/devops`" class="nav-link"
+              >DevOps</router-link
+            >
           </li>
-          <!-- Darkmode button -->
+
           <li class="nav-item align-items-center">
             <DarkModeToggle />
+          </li>
+          <li class="nav-item align-items-center">
+            <button
+              @click="switchLanguage"
+              class="btn btn-sm btn-outline-secondary"
+            >
+              {{ lang === "it" ? "English" : "Italiano" }}
+            </button>
           </li>
         </ul>
       </div>
@@ -46,15 +60,25 @@
   </nav>
 </template>
 
-<script>
+<script setup>
 import DarkModeToggle from "./DarkModeToggle.vue";
+import { useRoute, useRouter } from "vue-router";
+import { useLang, switchLang } from "../js/userLang";
 
-export default {
-  name: "NavComponent",
-  components: {
-    DarkModeToggle,
-  },
-};
+const route = useRoute();
+const router = useRouter();
+
+const lang = useLang(); // ref, ma in template si usa direttamente
+
+function switchLanguage() {
+  const segments = route.path.split("/").filter(Boolean);
+  if (segments.length === 0) return;
+
+  const newLang = switchLang(); // aggiorna lang.value e localStorage
+
+  segments[0] = newLang;
+  router.push("/" + segments.join("/"));
+}
 </script>
 
 <style lang="scss" scoped>

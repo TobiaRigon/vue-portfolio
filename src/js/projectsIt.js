@@ -1,0 +1,38 @@
+const projects = [
+  {
+    title: 'Kubix Link – NAV 365 Sync',
+    technology: 'Progetto di Integrazione PHP',
+    description: 'Sviluppo di un sistema di sincronizzazione bidirezionale tra Lectra Kubix Link (PLM) e Microsoft NAV 365 (ERP), utilizzando PHP, REST API e webhook. Il progetto ha comportato la gestione della coerenza dei dati e degli aggiornamenti in tempo reale tra entrambe le piattaforme. Mi sono occupato dello sviluppo back-end e dell’integrazione tra sistemi, garantendo una comunicazione robusta tra gli ambienti. Questo lavoro ha migliorato significativamente i flussi interni e l’accuratezza dei dati.',
+    images: ['/Sync1.png', '/Sync2.png']
+  },
+  {
+    title: "Spotify Auto Playlist",
+    technology: "Progetto di Automazione in Python",
+    githubUrl: "https://github.com/TobiaRigon/Spotify_Auto_Playlist",
+    description: "Sviluppo di uno script in Python che automatizza la creazione e l’aggiornamento di una playlist Spotify usando le API Web di Spotify e la libreria Spotipy. Il progetto include l’autenticazione con le API di Spotify, la gestione sicura delle credenziali utente e l’aggiunta programmata di brani a una playlist. Questa automazione migliora l’esperienza dell’utente semplificando la gestione delle playlist.",
+    images: ["/Spotify1.png", "/Spotify2.png"]
+  },
+  {
+    title: 'BoolBnB',
+    technology: 'Progetto Vue.js e Laravel',
+    githubUrl: 'https://github.com/TobiaRigon/boolBnB',
+    description: 'Sviluppo di BoolBnB, una piattaforma web completa realizzata con Vue.js e Laravel. Ho collaborato con un team per creare un’esperienza utente fluida, progettando e implementando un’interfaccia dinamica e responsive. Sono state sfruttate funzionalità avanzate di Vue.js, come routing e gestione dello stato, per garantire prestazioni ottimali. Il risultato è un sito pienamente funzionale con funzionalità come filtri per appartamenti, registrazione utenti, gestione appartamenti (creazione, modifica), sistema di messaggistica per appartamento, visualizzazione messaggi e sponsorizzazione. Il focus è stato sempre sulla qualità dell’esperienza utente.',
+    images: ['/Bool1.png', '/Bool2.png', '/Bool3.png']
+  },
+  {
+    title: 'Il Mio Portfolio',
+    technology: 'Vetrina delle mie Competenze e Passioni',
+    githubUrl: 'https://github.com/TobiaRigon/vue-portfolio',
+    description: "Il mio portfolio è una vetrina digitale dove presento me stesso e i miei progetti personali. Utilizzando tecnologie moderne come Vue.js e Three.js, ho creato un ambiente interattivo per esplorare i miei lavori in modo fluido e intuitivo. Vue.js assicura un’esperienza di navigazione reattiva e senza interruzioni, mentre Three.js aggiunge un tocco immersivo dando vita ai progetti in 3D.",
+    images: ['/Portfolio1.png', '/Portfolio2.png', '/Portfolio3.png']
+  },
+  {
+    title: 'Lyricsmus',
+    technology: 'Progetto Showcase con Vue.js',
+    githubUrl: 'https://github.com/TobiaRigon/proj-html-vuejs',
+    description: 'Sviluppo di un sito vetrina utilizzando Vue.js. Il progetto è stato realizzato in team, curando la progettazione e l’implementazione di un’interfaccia utente dinamica e responsive, con l’integrazione di funzionalità avanzate di Vue.js come routing e gestione dello stato. Il risultato è un sito vetrina funzionale, ottimizzato per offrire un’esperienza utente di alta qualità.',
+    images: ['/Ly1.png', '/Ly2.png', '/Ly3.png']
+  },
+];
+
+export default projects;
