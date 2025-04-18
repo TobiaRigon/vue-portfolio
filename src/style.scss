@@ -19,4 +19,46 @@ h1, h2, h3, p {
     
   }
 
+
+  //Darkmode
+
+  body.dark-mode {
+    background-color: #121212;
+    color: #f0f0f0;
+  
+    a {
+      color: #9ecfff;
+    }
+  
+
+    .navbar-toggler-icon {
+        filter: invert(1);
+    }
+
+
+    .navbar {
+     // background-color: #1a1a1a !important;
+    }
+  
+    .nav-link {
+      color: #ffffff !important;
+    }
+  
+    section {
+      background-color: transparent;
+  
+      h1,
+      h2,
+      h3,
+      p,
+      li {
+        color: #f0f0f0;
+      }
+    }
+  
+    .hero {
+      color: #f0f0f0;
+    }
+  }
+  
   

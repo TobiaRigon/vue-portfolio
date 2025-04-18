@@ -36,6 +36,10 @@
           <li class="nav-item">
             <router-link to="/devops" class="nav-link">DevOps</router-link>
           </li>
+          <!-- Darkmode button -->
+          <li class="nav-item align-items-center">
+            <DarkModeToggle />
+          </li>
         </ul>
       </div>
     </div>
@@ -43,12 +47,17 @@
 </template>
 
 <script>
+import DarkModeToggle from "./DarkModeToggle.vue";
+
 export default {
   name: "NavComponent",
+  components: {
+    DarkModeToggle,
+  },
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .navbar-toggler:focus {
   box-shadow: none;
   outline: none;
@@ -56,5 +65,11 @@ export default {
 
 li {
   font-size: 18px;
+
+  .mode-toggle {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
 }
 </style>
