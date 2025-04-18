@@ -6,10 +6,25 @@
       :class="currentShapeClass"
       @click="toggleShape"
     ></div>
+
+    <div
+      v-if="currentAlertMessage"
+      class="alert alert-info position-fixed top-0 start-50 translate-middle-x mt-3 px-4 shadow"
+      role="alert"
+      style="z-index: 9999"
+    >
+      {{ currentAlertMessage }}
+    </div>
   </div>
 </template>
 
 <style scoped>
+.alert {
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+}
+
 #shape {
   width: 20px;
   height: 20px;
@@ -39,8 +54,23 @@ export default {
   data() {
     return {
       currentShape: "triangle",
+      clickCount: 0,
+      clickTimeout: null,
+      currentAlertMessage: null,
+      alertMessages: [
+        "🧠 Calm down, hacker!",
+        "👀 I see what you're doing.",
+        "🧩 Looking for secrets?",
+        "🚨 Stop poking the triangle!",
+        "🎯 You're persistent, aren't you?",
+        "🔒 No cheat codes here.",
+        "🌀 Not everything has an easter egg...",
+        "⚠️ Overclocking your mouse?",
+        "🧠 Breathe. It's just a shape.",
+      ],
     };
   },
+
   computed: {
     currentShapeClass() {
       return this.currentShape;
@@ -60,6 +90,8 @@ export default {
   },
   methods: {
     toggleShape() {
+      this.handleClickSpam();
+
       if (this.currentShape === "triangle") {
         this.currentShape = "square";
       } else if (this.currentShape === "square") {
@@ -69,6 +101,30 @@ export default {
       }
 
       this.updateFavicon();
+    },
+
+    handleClickSpam() {
+      this.clickCount++;
+
+      clearTimeout(this.clickTimeout);
+      this.clickTimeout = setTimeout(() => {
+        this.clickCount = 0;
+      }, 1500);
+
+      if (this.clickCount >= 6) {
+        this.clickCount = 0;
+
+        // scegli messaggio casuale
+        const randomIndex = Math.floor(
+          Math.random() * this.alertMessages.length
+        );
+        this.currentAlertMessage = this.alertMessages[randomIndex];
+
+        // auto chiudi
+        setTimeout(() => {
+          this.currentAlertMessage = null;
+        }, 4000);
+      }
     },
 
     updateFavicon() {
@@ -89,12 +145,10 @@ export default {
           ctx.closePath();
           ctx.fill();
           break;
-
         case "square":
           ctx.fillStyle = "#4ec439";
           ctx.fillRect(0, 0, 64, 64);
           break;
-
         case "circle":
           ctx.fillStyle = "#39b2c4";
           ctx.beginPath();
@@ -115,7 +169,7 @@ export default {
     },
   },
   mounted() {
-    this.updateFavicon(); // favicon iniziale
+    this.updateFavicon();
   },
 };
 </script>
