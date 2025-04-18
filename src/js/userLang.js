@@ -13,9 +13,15 @@ export function switchLang() {
 }
 
 function detectInitialLang() {
+  // 1. Controlla se l'utente ha già scelto una lingua
   const saved = localStorage.getItem("preferredLang");
-  if (saved) return saved;
+  if (saved === "it" || saved === "en") return saved;
 
-  const lang = navigator.language || navigator.userLanguage;
-  return lang.startsWith("it") ? "it" : "en";
+  // 2. Se no, usa la lingua del browser
+  const browserLang = navigator.language || navigator.userLanguage;
+  const preferred = browserLang.startsWith("it") ? "it" : "en";
+
+  // Salva anche la lingua rilevata come default, così la ricorda dopo
+  localStorage.setItem("preferredLang", preferred);
+  return preferred;
 }
