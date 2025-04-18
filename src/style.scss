@@ -22,6 +22,12 @@ h1, h2, h3, p {
 
   //Darkmode
 
+
+  html, body {
+    overflow-x: hidden;
+  }
+
+  
   body.dark-mode {
     background-color: #121212;
     color: #f0f0f0;

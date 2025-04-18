@@ -47,12 +47,7 @@
             <DarkModeToggle />
           </li>
           <li class="nav-item align-items-center">
-            <button
-              @click="switchLanguage"
-              class="btn btn-sm btn-outline-secondary"
-            >
-              {{ lang === "it" ? "English" : "Italiano" }}
-            </button>
+            <LangSwitcher />
           </li>
         </ul>
       </div>
@@ -62,23 +57,10 @@
 
 <script setup>
 import DarkModeToggle from "./DarkModeToggle.vue";
-import { useRoute, useRouter } from "vue-router";
-import { useLang, switchLang } from "../js/userLang";
+import LangSwitcher from "./LangSwitcher.vue";
+import { useLang } from "../js/userLang";
 
-const route = useRoute();
-const router = useRouter();
-
-const lang = useLang(); // ref, ma in template si usa direttamente
-
-function switchLanguage() {
-  const segments = route.path.split("/").filter(Boolean);
-  if (segments.length === 0) return;
-
-  const newLang = switchLang(); // aggiorna lang.value e localStorage
-
-  segments[0] = newLang;
-  router.push("/" + segments.join("/"));
-}
+const lang = useLang(); // serve solo per costruire i router-link
 </script>
 
 <style lang="scss" scoped>

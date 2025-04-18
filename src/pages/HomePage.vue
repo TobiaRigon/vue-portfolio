@@ -111,20 +111,6 @@ section {
       flex-direction: column;
     }
   }
-
-  h1 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    font-size: 90px;
-    line-height: 100px;
-    font-weight: 700;
-    width: 100%;
-    height: 100px;
-    text-align: center;
-  }
 }
 
 .one {
@@ -146,15 +132,15 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 90px;
-  line-height: 100px;
+  font-size: clamp(32px, 8vw, 90px); // Responsive
+  line-height: 1.1;
   font-weight: 700;
-  height: 100px;
-  width: 100%;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  padding: 0 1rem;
 }
 
 h2 {
