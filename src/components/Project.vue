@@ -65,6 +65,7 @@ export default {
     const onSlideChange = () => {
       console.log("slide change");
     };
+
     return {
       onSwiper,
       onSlideChange,

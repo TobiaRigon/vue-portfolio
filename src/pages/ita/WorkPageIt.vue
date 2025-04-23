@@ -1,6 +1,10 @@
 <script>
 import { setupThree } from "../../js/threeWork.js";
 import Project from "../../components/Project.vue";
+import { loadProjectsFromCSV } from "../../js/useProjects.js";
+
+const sheetId =
+  "2PACX-1vSOtlci9HzVaJL8qKtsuD3FXY_LEhv8iJg-PTLGXVWRFEVEGDfxlifQFZs7RNk_y9oMpN6QaTqMThk7";
 
 export default {
   components: {
@@ -42,17 +46,15 @@ export default {
     },
     async loadProjects() {
       try {
-        const res = await fetch("/data/projectsIt.json");
-        const data = await res.json();
-        this.projects = data;
+        const projects = await loadProjectsFromCSV(sheetId);
+        this.projects = projects;
       } catch (err) {
-        console.error("Errore nel caricamento di projectsIt.json:", err);
+        console.error("Errore nel caricamento da Google Sheet:", err);
       }
     },
   },
   async mounted() {
     await this.loadProjects();
-
     const canvas = document.querySelector("canvas.webgl");
     setupThree(canvas);
   },
