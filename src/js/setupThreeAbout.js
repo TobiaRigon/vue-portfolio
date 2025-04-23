@@ -23,7 +23,7 @@ export function setupThreeAbout(canvas) {
   });
 
   let mesh = new THREE.Mesh(geometries[shapeIndex](), material);
-  mesh.scale.set(0.5, 0.5, 0.5);
+  mesh.scale.set(0.7, 0.7, 0.7);
   scene.add(mesh);
 
   const sizes = {
@@ -55,7 +55,7 @@ export function setupThreeAbout(canvas) {
     colorIndex = (colorIndex + 1) % colors.length;
 
     material.color.set(colors[colorIndex]);
-    mesh.scale.set(0.5, 0.5, 0.5);
+    mesh.scale.set(0.7, 0.7, 0.7);
     mesh = new THREE.Mesh(geometries[shapeIndex](), material);
     mesh.position.set(pos.x, pos.y, 0);
     scene.add(mesh);
@@ -90,7 +90,7 @@ export function setupThreeAbout(canvas) {
       changeShape();
     }
   
-    mesh.scale.set(0.5, 0.5, 0.5);
+    mesh.scale.set(0.7, 0.7, 0.7);
     mesh.position.set(pos.x, pos.y + Math.sin(elapsed * 0.5) * 0.2, 0);
     mesh.rotation.x += 0.002;
     mesh.rotation.y += 0.004;

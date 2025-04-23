@@ -21,7 +21,7 @@ export function setupThreeDevOps(canvas) {
   });
 
   let mesh = new THREE.Mesh(geometries[shapeIndex](), material);
-  mesh.scale.set(0.5, 0.5, 0.5);
+  mesh.scale.set(0.7, 0.7, 0.7);
   scene.add(mesh);
 
   const sizes = {
@@ -55,7 +55,7 @@ export function setupThreeDevOps(canvas) {
 
     material.color.set(colors[colorIndex]);
     mesh = new THREE.Mesh(geometries[shapeIndex](), material);
-    mesh.scale.set(0.5, 0.5, 0.5);
+    mesh.scale.set(0.7, 0.7, 0.7);
     mesh.position.set(pos.x, pos.y, 0);
     scene.add(mesh);
   };
@@ -101,7 +101,7 @@ export function setupThreeDevOps(canvas) {
 
   // Salto e cambio forma con spinta laterale
   window.addEventListener("click", () => {
-    velocity.y = 0.03;
+    velocity.y = 0.02;
     velocity.x = (Math.random() - 0.5) * 0.02; // spinta laterale casuale
     changeShape();
   });
