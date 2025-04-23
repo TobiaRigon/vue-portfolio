@@ -8,11 +8,12 @@ My personal portfolio is one of my early exercises built with Vue.js. It's a pro
 
 ## Check out my Portfolio 🌐
 
-You can explore my portfolio live at [tobiarigon.com](https://tobiarigon.com).
+You can explore my portfolio live at [my.tobiarigon.com](https://my.tobiarigon.com).
 
 ## Technologies Used 💻
 
 - Vue.js
+- Three.js
 - HTML5
 - CSS3
 
