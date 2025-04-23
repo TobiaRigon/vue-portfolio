@@ -44,4 +44,9 @@ export default {
     font-weight: 300;
   }
 }
+body.dark-mode {
+  a {
+    color: #f0f0f0;
+  }
+}
 </style>
