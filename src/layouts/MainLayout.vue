@@ -1,6 +1,7 @@
 <template>
   <div>
     <ThreeAboutCanvas v-if="isAboutPage" />
+    <ThreeDevOpsCanvas v-if="isDevOpsPage" />
     <HeaderComponent />
     <router-view />
     <FooterComponent />
@@ -11,6 +12,7 @@
 import HeaderComponent from "../components/HeaderComponent.vue";
 import FooterComponent from "../components/FooterComponent.vue";
 import ThreeAboutCanvas from "../components/ThreeAboutCanvas.vue";
+import ThreeDevOpsCanvas from "../components/ThreeDevOpsCanvas.vue";
 import { useRoute } from "vue-router";
 
 export default {
@@ -18,11 +20,14 @@ export default {
     HeaderComponent,
     FooterComponent,
     ThreeAboutCanvas,
+    ThreeDevOpsCanvas,
   },
   computed: {
     isAboutPage() {
       return this.$route.path.includes("/about");
-      return this.$route.path.includes("/about");
+    },
+    isDevOpsPage() {
+      return this.$route.path.includes("/devops");
     },
   },
 };
