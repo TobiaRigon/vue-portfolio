@@ -111,7 +111,7 @@ export default {
   </section>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .jumbo {
   top: 0;
   left: 0;
@@ -142,5 +142,13 @@ section {
 
 .page-link {
   color: #000000;
+}
+
+body.dark-mode {
+  .active {
+    button {
+      color: white !important;
+    }
+  }
 }
 </style>
