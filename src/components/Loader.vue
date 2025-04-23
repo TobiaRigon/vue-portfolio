@@ -28,7 +28,7 @@ export default {
       this.interval = setInterval(() => {
         index = (index + 1) % this.shapes.length;
         this.currentShape = this.shapes[index];
-      }, 1000); // Cambia forma ogni 1 secondo
+      }, 500); // Cambia forma ogni 1 secondo
     },
     stopAnimation() {
       clearInterval(this.interval);

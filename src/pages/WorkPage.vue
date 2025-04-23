@@ -54,9 +54,18 @@ export default {
     },
   },
   async mounted() {
+    const loader = this.$root.$refs.loader;
+
+    if (loader?.show) loader.show(); // mostra loader
+
     await this.loadProjects();
-    const canvas = document.querySelector("canvas.webgl");
-    setupThree(canvas);
+
+    if (loader?.hide) {
+      // Attendi 200ms prima di nascondere (evita flicker)
+      setTimeout(() => loader.hide(), 200);
+    }
+
+    setupThree(this.$refs.canvas);
   },
 };
 </script>
