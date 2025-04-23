@@ -1,7 +1,6 @@
 <script>
 import { setupThree } from "../../js/threeWork.js";
 import Project from "../../components/Project.vue";
-import projects from "../../js/projectsIt.js";
 
 export default {
   components: {
@@ -9,7 +8,7 @@ export default {
   },
   data() {
     return {
-      projects: projects,
+      projects: [],
       currentPage: 1,
       perPage: 3,
     };
@@ -41,9 +40,19 @@ export default {
         this.changePage(this.currentPage - 1);
       }
     },
+    async loadProjects() {
+      try {
+        const res = await fetch("/data/projectsIt.json");
+        const data = await res.json();
+        this.projects = data;
+      } catch (err) {
+        console.error("Errore nel caricamento di projectsIt.json:", err);
+      }
+    },
   },
+  async mounted() {
+    await this.loadProjects();
 
-  mounted() {
     const canvas = document.querySelector("canvas.webgl");
     setupThree(canvas);
   },
