@@ -14,9 +14,10 @@ import AboutPage from './pages/AboutPage.vue'
 import AboutPageIt from './pages/ita/AboutPageIt.vue'
 import WorkPage from './pages/WorkPage.vue'
 import WorkPageIt from './pages/ita/WorkPageIt.vue'
-
 import DevOpsPage from './pages/DevOpsPage.vue';
 import DevOpsPageIt from './pages/ita/DevOpsPageIt.vue';
+import NotFound from './pages/NotFound.vue';
+import NotFoundIt from './pages/ita/NotFoundIt.vue';        
 
 
 const routes = [
@@ -33,6 +34,11 @@ const routes = [
      { path: '/it/about', component: AboutPageIt },
      { path: '/it/work', component: WorkPageIt },
     { path: '/it/devops', component: DevOpsPageIt },
+
+     // Catch-all (404)
+     { path: '/it/:pathMatch(.*)*', name: 'NotFoundIt', component: NotFoundIt },
+     // Catch-all (404)
+     { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound }
 ]
 
 function getPreferredLocale() {
