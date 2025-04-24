@@ -8,15 +8,20 @@
     >
       <!-- Hamburger toggle button -->
       <button
+        v-if="isMobile"
         class="navbar-toggler ms-auto"
+        :class="{ open: isOpen }"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#navbarNav"
         aria-controls="navbarNav"
-        aria-expanded="false"
+        :aria-expanded="isOpen.toString()"
         aria-label="Toggle navigation"
+        @click="toggleNav"
       >
-        <span class="navbar-toggler-icon"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
       </button>
 
       <!-- Collapsing nav items -->
@@ -56,26 +61,116 @@
 </template>
 
 <script setup>
+import { ref, onMounted, onUnmounted } from "vue";
 import DarkModeToggle from "./DarkModeToggle.vue";
 import LangSwitcher from "./LangSwitcher.vue";
 import { useLang } from "../js/userLang";
 
-const lang = useLang(); // serve solo per costruire i router-link
+const lang = useLang();
+const isOpen = ref(false);
+
+const isMobile = ref(window.innerWidth < 768);
+
+const handleResize = () => {
+  isMobile.value = window.innerWidth < 768;
+};
+
+const toggleNav = () => {
+  isOpen.value = !isOpen.value; // attiva subito l'animazione visiva
+};
+
+onUnmounted(() => {
+  window.removeEventListener("resize", handleResize);
+});
+
+onMounted(() => {
+  window.addEventListener("resize", handleResize);
+  handleResize(); // inizializza
+
+  const collapse = document.getElementById("navbarNav");
+  if (collapse) {
+    collapse.addEventListener("shown.bs.collapse", () => (isOpen.value = true));
+    collapse.addEventListener(
+      "hidden.bs.collapse",
+      () => (isOpen.value = false)
+    );
+  }
+});
 </script>
 
 <style lang="scss" scoped>
-.navbar-toggler:focus {
-  box-shadow: none;
+.navbar-toggler {
+  width: 30px;
+  height: 20px;
+  position: relative;
+  border: none;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+  z-index: 1001;
   outline: none;
+
+  &:focus,
+  &:focus-visible,
+  &:focus-within {
+    outline: none;
+    box-shadow: none;
+  }
 }
 
-li {
-  font-size: 18px;
+button,
+button:focus,
+button:active {
+  border: none;
+  background: transparent;
+  outline: none;
+  box-shadow: none;
+}
 
-  .mode-toggle {
-    height: 100%;
-    display: flex;
-    align-items: center;
+.burger-line {
+  width: 100%;
+  height: 1px;
+  background-color: #000;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+body.dark-mode {
+  .burger-line {
+    background-color: #fff;
+  }
+  .navbar-toggler.open .burger-line {
+    opacity: 0.7;
+  }
+}
+
+/* Trasformazione in X quando aperto */
+.navbar-toggler.open .burger-line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.navbar-toggler.open .burger-line:nth-child(2) {
+  opacity: 0;
+}
+.navbar-toggler.open .burger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(8px, -8px);
+}
+
+.navbar-toggler.open .burger-line {
+  opacity: 0.7;
+}
+
+// Dark mode styles for the navbar toggler
+body.dark-mode {
+  .burger-line {
+    background-color: #fff;
+  }
+  .navbar-toggler.open .burger-line {
+    opacity: 1;
+  }
+  .navbar-toggler.open .burger-line:nth-child(2) {
+    opacity: 0;
   }
 }
 </style>
