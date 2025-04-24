@@ -1,10 +1,7 @@
 <script>
 import { setupThree } from "../../js/threeWork.js";
 import Project from "../../components/Project.vue";
-import { loadProjectsFromCSV } from "../../js/useProjects.js";
-
-const sheetId =
-  "2PACX-1vSOtlci9HzVaJL8qKtsuD3FXY_LEhv8iJg-PTLGXVWRFEVEGDfxlifQFZs7RNk_y9oMpN6QaTqMThk7";
+import { projectCache } from "../../js/projectCache"; // importa la cache globale
 
 export default {
   components: {
@@ -44,24 +41,34 @@ export default {
         this.changePage(this.currentPage - 1);
       }
     },
-    async loadProjects() {
-      try {
-        const projects = await loadProjectsFromCSV(sheetId);
-        this.projects = projects;
-      } catch (err) {
-        console.error("Errore nel caricamento da Google Sheet:", err);
+    loadFromCache() {
+      const isItalian = this.$route.path.includes("/it");
+      const langKey = isItalian ? "it" : "en";
+
+      if (projectCache[langKey] && projectCache[langKey].length > 0) {
+        this.projects = projectCache[langKey];
+      } else {
+        console.warn(
+          "Progetti non presenti in cache. Forse il preload non è ancora completo."
+        );
       }
     },
   },
-  async mounted() {
+  mounted() {
     const loader = this.$root.$refs.loader;
 
-    if (loader?.show) loader.show(); // mostra loader
+    const isItalian = this.$route.path.includes("/it");
+    const langKey = isItalian ? "it" : "en";
 
-    await this.loadProjects();
+    const hasCache = projectCache[langKey] && projectCache[langKey].length > 0;
 
-    if (loader?.hide) {
-      // Attendi 200ms prima di nascondere (evita flicker)
+    if (!hasCache && loader?.show) {
+      loader.show();
+    }
+
+    this.loadFromCache();
+
+    if (!hasCache && loader?.hide) {
       setTimeout(() => loader.hide(), 200);
     }
 

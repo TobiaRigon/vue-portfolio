@@ -15,6 +15,7 @@ import FooterComponent from "../components/FooterComponent.vue";
 import ThreeAboutCanvas from "../components/ThreeAboutCanvas.vue";
 import ThreeDevOpsCanvas from "../components/ThreeDevOpsCanvas.vue";
 import Loader from "../components/Loader.vue";
+import { preloadProjects } from "../js/loadAllProjects";
 
 export default {
   components: {
@@ -33,6 +34,8 @@ export default {
     },
   },
   mounted() {
+    preloadProjects();
+
     const loader = this.$refs.loader;
     const router = this.$router;
 
