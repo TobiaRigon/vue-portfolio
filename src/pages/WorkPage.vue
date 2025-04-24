@@ -1,7 +1,7 @@
 <script>
-import { setupThree } from "../js/threeWork.js";
+import { setupThree, destroyThree } from "../js/threeWork.js";
 import Project from "../components/Project.vue";
-import { projectCache } from "../js/projectCache"; // importa la cache globale
+import { projectCache } from "../js/projectCache";
 
 export default {
   components: {
@@ -42,29 +42,20 @@ export default {
       }
     },
     loadFromCache() {
-      const isItalian = this.$route.path.includes("/it");
-      const langKey = isItalian ? "it" : "en";
-
-      if (projectCache[langKey] && projectCache[langKey].length > 0) {
+      const langKey = this.$route.path.includes("/it") ? "it" : "en";
+      if (projectCache[langKey]?.length > 0) {
         this.projects = projectCache[langKey];
       } else {
-        console.warn(
-          "Progetti non presenti in cache. Forse il preload non è ancora completo."
-        );
+        console.warn("Progetti non in cache");
       }
     },
   },
   mounted() {
     const loader = this.$root.$refs.loader;
+    const langKey = this.$route.path.includes("/it") ? "it" : "en";
+    const hasCache = projectCache[langKey]?.length > 0;
 
-    const isItalian = this.$route.path.includes("/it");
-    const langKey = isItalian ? "it" : "en";
-
-    const hasCache = projectCache[langKey] && projectCache[langKey].length > 0;
-
-    if (!hasCache && loader?.show) {
-      loader.show();
-    }
+    if (!hasCache && loader?.show) loader.show();
 
     this.loadFromCache();
 
@@ -74,47 +65,55 @@ export default {
 
     setupThree(this.$refs.canvas);
   },
+  unmounted() {
+    destroyThree(); // Pulisci scena / renderer
+  },
 };
 </script>
 
 <template>
-  <section class="position-relative jumbo">
-    <h1 class="cta position-absolute">
-      Scroll down to see my latest projects
-      <i class="fa-solid fa-chevron-down"></i>
-    </h1>
-    <canvas ref="canvas" class="webgl"></canvas>
-  </section>
+  <div class="work-wrapper">
+    <section class="position-relative jumbo">
+      <h1 class="cta position-absolute">
+        Scroll down to see my latest projects
+        <i class="fa-solid fa-chevron-down"></i>
+      </h1>
+      <canvas ref="canvas" class="webgl"></canvas>
+    </section>
 
-  <section class="container">
-    <Project
-      v-for="project in paginatedProjects"
-      :key="project.title"
-      :project="project"
-    />
+    <section class="container">
+      <Project
+        v-for="project in paginatedProjects"
+        :key="project.title"
+        :project="project"
+      />
 
-    <!-- Pagination controls -->
-    <nav class="d-flex justify-content-center my-4">
-      <ul class="pagination pagination-sm">
-        <li class="page-item" :class="{ disabled: currentPage === 1 }">
-          <button class="page-link" @click="prevPage">Previous</button>
-        </li>
-        <li
-          class="page-item"
-          v-for="page in totalPages"
-          :key="page"
-          :class="{ active: currentPage === page }"
-        >
-          <button class="page-link" @click="changePage(page)">
-            {{ page }}
-          </button>
-        </li>
-        <li class="page-item" :class="{ disabled: currentPage === totalPages }">
-          <button class="page-link" @click="nextPage">Next</button>
-        </li>
-      </ul>
-    </nav>
-  </section>
+      <!-- Pagination controls -->
+      <nav class="d-flex justify-content-center my-4">
+        <ul class="pagination pagination-sm">
+          <li class="page-item" :class="{ disabled: currentPage === 1 }">
+            <button class="page-link" @click="prevPage">Previous</button>
+          </li>
+          <li
+            class="page-item"
+            v-for="page in totalPages"
+            :key="page"
+            :class="{ active: currentPage === page }"
+          >
+            <button class="page-link" @click="changePage(page)">
+              {{ page }}
+            </button>
+          </li>
+          <li
+            class="page-item"
+            :class="{ disabled: currentPage === totalPages }"
+          >
+            <button class="page-link" @click="nextPage">Next</button>
+          </li>
+        </ul>
+      </nav>
+    </section>
+  </div>
 </template>
 
 <style lang="scss" scoped>

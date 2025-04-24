@@ -1,21 +1,23 @@
 <template>
-  <div class="not-found">
-    <h1 class="glitch">
-      <span class="color-1">4</span>
-      <span class="color-2">0</span>
-      <span class="color-3">4</span>
-    </h1>
+  <div class="notFound-wrapper">
+    <div class="not-found">
+      <h1 class="glitch">
+        <span class="color-1">4</span>
+        <span class="color-2">0</span>
+        <span class="color-3">4</span>
+      </h1>
 
-    <h2>{{ selectedSet.title }}</h2>
-    <p>{{ selectedSet.message }}</p>
+      <h2>{{ selectedSet.title }}</h2>
+      <p>{{ selectedSet.message }}</p>
 
-    <router-link to="/">{{ selectedSet.button }}</router-link>
+      <router-link to="/">{{ selectedSet.button }}</router-link>
 
-    <img
-      :src="selectedSet.gif"
-      alt="Random 404 reaction"
-      style="max-width: 250px; margin: 2rem auto; display: block"
-    />
+      <img
+        :src="selectedSet.gif"
+        alt="Random 404 reaction"
+        style="max-width: 250px; margin: 2rem auto; display: block"
+      />
+    </div>
   </div>
 </template>
 

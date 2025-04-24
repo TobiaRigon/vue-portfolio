@@ -1,163 +1,149 @@
 import * as THREE from "three";
-import gsap from 'gsap';
+import gsap from "gsap";
+
+let scene, camera, renderer, mainGeo, observer;
+let clock, animationId;
 
 export function setupThree(canvas) {
-  // scene
-  const scene = new THREE.Scene();
+  scene = new THREE.Scene();
 
-
-  // scroll
   const transformGeo = [
-    {
-      rotationZ: 0,
-      positionX: 1.5,
-      heightSegments: 3 // Numero di segmenti in altezza per la prima sezione
-    },
-    {
-      rotationZ: -3,
-      positionX: -1.7,
-      heightSegments: 4 // Numero di segmenti in altezza per la seconda sezione
-    },
-    {
-      rotationZ: -6,
-      positionX: 0,
-      heightSegments: 80 // Numero di segmenti in altezza per la terza sezione
-    },
+    { rotationZ: 0, positionX: 1.5, heightSegments: 3 },
+    { rotationZ: -3, positionX: -1.7, heightSegments: 4 },
+    { rotationZ: -6, positionX: 0, heightSegments: 80 },
+  ];
 
-  ]
+  const colors = ['#db3535', '#4ec439', '#39b2c4', '#dbcb35'];
+  let currentColorIndex = 0;
 
-  // test cube
-    // Altezza dei segmenti iniziale
-    let heightSegments = transformGeo[0].heightSegments;
-
-  const cylinderGeometry = new THREE.CylinderGeometry(1.5, 1.5, 1.5, heightSegments);
-
-  const colors = ['#db3535', '#4ec439', '#39b2c4', '#dbcb35']; // Array di colori
-  let currentColorIndex  = 0;// Colore iniziale
-  const mainMaterial = new THREE.MeshBasicMaterial({
+  const firstTransform = transformGeo[0];
+  const geometry = new THREE.CylinderGeometry(1.5, 1.5, 1.5, firstTransform.heightSegments);
+  const material = new THREE.MeshBasicMaterial({
     color: parseInt(colors[currentColorIndex].replace(/^#/, ''), 16),
+    transparent: true,
+    opacity: 0, // inizia invisibile
   });
-  const mainGeo = new THREE.Mesh(cylinderGeometry, mainMaterial);
 
-  mainGeo.position.x = 1.5 
-  mainGeo.rotation.x = Math.PI * 0.2 
-  mainGeo.rotation.z = Math.PI * 0.15
-
-  console.log(mainGeo);
+  mainGeo = new THREE.Mesh(geometry, material);
+  mainGeo.position.x = firstTransform.positionX;
+  mainGeo.rotation.x = Math.PI * 0.2;
+  mainGeo.rotation.z = firstTransform.rotationZ;
   scene.add(mainGeo);
 
-  // scroll
-  
-  let currentSection = 0;
+  // Fade-in dopo 700ms
+setTimeout(() => {
+  gsap.to(mainGeo.material, {
+    duration: 1.2,
+    opacity: 1,
+    ease: "power2.out",
+  });
+}, 400);
 
-  const sectionEls = document.querySelectorAll("section");
-  
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const id = entry.target.id; // es. "section-1"
-          const index = parseInt(id.split("-")[1]); // es. 1
-          if (index !== currentSection) {
-            currentSection = index;
-  
-            // Applica le animazioni come prima
-            if (!!mainGeo) {
-              gsap.to(mainGeo.rotation, {
-                duration: 1.5,
-                ease: "power2.inOut",
-                z: transformGeo[currentSection].rotationZ,
-              });
-  
-              gsap.to(mainGeo.position, {
-                duration: 1.5,
-                ease: "power2.inOut",
-                x: transformGeo[currentSection].positionX,
-              });
-  
-              // Cambia colore
-              currentColorIndex = currentSection % colors.length;
-              mainGeo.material.color.set(colors[currentColorIndex]);
-  
-              // Cambia segmenti
-              heightSegments = transformGeo[currentSection].heightSegments;
-              mainGeo.geometry.dispose();
-              mainGeo.geometry = new THREE.CylinderGeometry(1.5, 1.5, 1.5, heightSegments);
-            }
-          }
-        }
-      });
-    },
-    {
-      root: null,
-      threshold: 0.6, // Trigger quando il 60% è visibile
-    }
-  );
-  
-  sectionEls.forEach((el) => observer.observe(el));
-  
-
-
-
-  // size
   const sizes = {
     width: window.innerWidth,
     height: window.innerHeight,
   };
 
-  // camera
-  const camera = new THREE.PerspectiveCamera(
-    35,
-    sizes.width / sizes.height,
-    0.1,
-    1000
-  );
+  camera = new THREE.PerspectiveCamera(35, sizes.width / sizes.height, 0.1, 1000);
   camera.position.z = 8;
   scene.add(camera);
 
-
-
-  // renderer
-  const renderer = new THREE.WebGLRenderer({
-    canvas: canvas,
-    antialiasing: true,
+  renderer = new THREE.WebGLRenderer({
+    canvas,
+    antialias: true,
     alpha: true,
   });
-
   renderer.setSize(sizes.width, sizes.height);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-  renderer.render(scene, camera);
+  const sectionEls = document.querySelectorAll("section");
+  let currentSection = 0;
 
-// animate
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        const index = parseInt(id.split("-")[1]);
 
-const clock = new THREE.Clock()
-let lastElapsedTime = 0
+        if (index !== currentSection) {
+          currentSection = index;
 
-const tick = () => {
-    const elapsedTime = clock.getElapsedTime()
-    const deltaTime = elapsedTime - lastElapsedTime
-    lastElapsedTime = elapsedTime
+          gsap.to(mainGeo.rotation, {
+            duration: 1.5,
+            ease: "power2.inOut",
+            z: transformGeo[currentSection].rotationZ,
+          });
 
-     // Calcola l'angolo di rotazione basato sul tempo trascorso
-     const rotationSpeed = 0.5; // Velocità di rotazione
-     const rotationAngle = elapsedTime * rotationSpeed;
- 
-     // Imposta l'angolo di rotazione lungo l'asse y
-     mainGeo.rotation.y = rotationAngle;
+          gsap.to(mainGeo.position, {
+            duration: 1.5,
+            ease: "power2.inOut",
+            x: transformGeo[currentSection].positionX,
+          });
 
-    // respiro
-    if(!!mainGeo){
-      mainGeo.position.y = Math.sin(elapsedTime*0.5) * 0.15 -0.15
+          currentColorIndex = currentSection % colors.length;
+          mainGeo.material.color.set(colors[currentColorIndex]);
+
+          mainGeo.geometry.dispose();
+          mainGeo.geometry = new THREE.CylinderGeometry(1.5, 1.5, 1.5, transformGeo[currentSection].heightSegments);
+        }
+      }
+    });
+  }, { root: null, threshold: 0.6 });
+
+  sectionEls.forEach((el) => observer.observe(el));
+
+  const startOnce = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        startOnce.disconnect();
+        tick();
+      }
+    });
+  }, { threshold: 0.9 });
+
+  const firstSection = document.getElementById("section-0");
+  if (firstSection) startOnce.observe(firstSection);
+
+  clock = new THREE.Clock();
+  const tick = () => {
+    const elapsedTime = clock.getElapsedTime();
+
+    if (mainGeo) {
+      mainGeo.rotation.y = elapsedTime * 0.5;
+      mainGeo.position.y = Math.sin(elapsedTime * 0.5) * 0.15 - 0.15;
     }
 
-    // Render
-    // console.log('tick')
-    renderer.render(scene, camera)
-
-    // Call tick again on the next frame
-    window.requestAnimationFrame(tick)
+    renderer.render(scene, camera);
+    animationId = window.requestAnimationFrame(tick);
+  };
 }
-tick(); 
 
+export function destroyThree() {
+  if (animationId) {
+    cancelAnimationFrame(animationId);
+    animationId = null;
+  }
+
+  if (observer) {
+    observer.disconnect();
+    observer = null;
+  }
+
+  if (mainGeo) {
+    mainGeo.geometry.dispose();
+    mainGeo.material.dispose();
+    scene.remove(mainGeo);
+    mainGeo = null;
+  }
+
+  if (renderer) {
+    renderer.dispose();
+    renderer.forceContextLoss?.();
+    renderer.domElement?.remove();
+    renderer = null;
+  }
+
+  camera = null;
+  scene = null;
+  clock = null;
 }

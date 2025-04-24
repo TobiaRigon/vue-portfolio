@@ -4,7 +4,12 @@
     <ThreeAboutCanvas v-if="isAboutPage" />
     <ThreeDevOpsCanvas v-if="isDevOpsPage" />
     <HeaderComponent />
-    <router-view />
+    <router-view v-slot="{ Component }">
+      <transition name="page" mode="out-in">
+        <component :is="Component" :key="$route.fullPath" />
+      </transition>
+    </router-view>
+
     <FooterComponent />
   </div>
 </template>
@@ -61,3 +66,22 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.4s ease;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.page-enter-to,
+.page-leave-from {
+  opacity: 1;
+  transform: scale(1);
+}
+</style>

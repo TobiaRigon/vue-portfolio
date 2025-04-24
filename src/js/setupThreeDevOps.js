@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import gsap from "gsap";
 
 export function setupThreeDevOps(canvas) {
   const scene = new THREE.Scene();
@@ -17,12 +18,21 @@ export function setupThreeDevOps(canvas) {
     color: new THREE.Color(colors[colorIndex]),
     wireframe: false,
     transparent: true,
-    opacity: 1,
+    opacity: 0, // partenza invisibile
   });
 
   let mesh = new THREE.Mesh(geometries[shapeIndex](), material);
   mesh.scale.set(0.7, 0.7, 0.7);
   scene.add(mesh);
+
+  // Fade-in iniziale con delay
+  setTimeout(() => {
+    gsap.to(material, {
+      opacity: 1,
+      duration: 1.2,
+      ease: "power2.out"
+    });
+  }, 600);
 
   const sizes = {
     width: window.innerWidth,
@@ -77,13 +87,11 @@ export function setupThreeDevOps(canvas) {
     pos.y += velocity.y;
     pos.x += velocity.x;
 
-    // Rimbalzo verticale
     if (pos.y <= floor) {
       pos.y = floor;
       velocity.y *= bounceFactor;
     }
 
-    // Rimbalzo orizzontale
     if (pos.x <= -halfWidth || pos.x >= halfWidth) {
       velocity.x *= -1;
       pos.x = THREE.MathUtils.clamp(pos.x, -halfWidth, halfWidth);
@@ -99,10 +107,9 @@ export function setupThreeDevOps(canvas) {
 
   tick();
 
-  // Salto e cambio forma con spinta laterale
   window.addEventListener("click", () => {
     velocity.y = 0.02;
-    velocity.x = (Math.random() - 0.5) * 0.02; // spinta laterale casuale
+    velocity.x = (Math.random() - 0.5) * 0.02;
     changeShape();
   });
 

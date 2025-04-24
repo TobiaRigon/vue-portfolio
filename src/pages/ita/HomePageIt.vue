@@ -1,67 +1,71 @@
 <script>
-import { setupThree } from "../../js/threeSetup.js";
+import { setupThree, destroyThree } from "../../js/threeSetup.js";
 
 export default {
   mounted() {
-    const canvas = document.querySelector("canvas.webgl");
-    setupThree(canvas);
+    setupThree(this.$refs.canvas);
+  },
+  unmounted() {
+    destroyThree();
   },
 };
 </script>
 
 <template>
-  <canvas ref="canvas" class="webgl"></canvas>
+  <div class="homepage-wrapper">
+    <canvas ref="canvas" class="webgl"></canvas>
 
-  <div class="snap-container">
-    <section id="section-0" class="one container">
-      <div class="mycontainer row">
-        <div class="col-lg-6">
-          <div class="hero">
-            <h2>
-              Scopri il mio percorso nello sviluppo web.
-              <!-- <h3>Embracing the World of Coding and Design</h3> -->
-            </h2>
-            <p>
-              Il mio percorso nello sviluppo web è stato dinamico e
-              gratificante. Ora lavoro come sviluppatore e specialista IT nel
-              settore della moda di lusso, dove mi occupo della creazione e
-              manutenzione di strumenti digitali che supportano flussi di lavoro
-              complessi. Dalla programmazione di interfacce alla realizzazione
-              di integrazioni tra sistemi, continuo ad affinare le mie
-              competenze sia nel front-end che nel back-end — guidato sempre
-              dalla creatività e dalla voglia di costruire esperienze digitali
-              significative.
-            </p>
+    <div class="snap-container">
+      <section id="section-0" class="one container">
+        <div class="mycontainer row">
+          <div class="col-lg-6">
+            <div class="hero">
+              <h2>
+                Scopri il mio percorso nello sviluppo web.
+                <!-- <h3>Embracing the World of Coding and Design</h3> -->
+              </h2>
+              <p>
+                Il mio percorso nello sviluppo web è stato dinamico e
+                gratificante. Ora lavoro come sviluppatore e specialista IT nel
+                settore della moda di lusso, dove mi occupo della creazione e
+                manutenzione di strumenti digitali che supportano flussi di
+                lavoro complessi. Dalla programmazione di interfacce alla
+                realizzazione di integrazioni tra sistemi, continuo ad affinare
+                le mie competenze sia nel front-end che nel back-end — guidato
+                sempre dalla creatività e dalla voglia di costruire esperienze
+                digitali significative.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="section-1" class="two container">
-      <div class="mycontainer row flex-row-reverse">
-        <div class="col-lg-6">
-          <div class="hero">
-            <h2>
-              Esplorando le profondità della creazione 3D.
-              <!-- <h3>Navigating the Boundless Realm of Virtual Artistry</h3> -->
-            </h2>
-            <p>
-              Il mio background nel 3D continua a influenzare il mio approccio
-              al design e alla risoluzione dei problemi. Dalla modellazione di
-              personaggi alla creazione di ambienti immersivi, ho sviluppato una
-              forte sensibilità per la narrazione visiva. Anche se ora il mio
-              focus principale è lo sviluppo, traggo ancora ispirazione da
-              quelle basi 3D per portare una prospettiva unica nel mondo
-              digitale — fondendo forma, funzione e immaginazione.
-            </p>
+      <section id="section-1" class="two container">
+        <div class="mycontainer row flex-row-reverse">
+          <div class="col-lg-6">
+            <div class="hero">
+              <h2>
+                Esplorando le profondità della creazione 3D.
+                <!-- <h3>Navigating the Boundless Realm of Virtual Artistry</h3> -->
+              </h2>
+              <p>
+                Il mio background nel 3D continua a influenzare il mio approccio
+                al design e alla risoluzione dei problemi. Dalla modellazione di
+                personaggi alla creazione di ambienti immersivi, ho sviluppato
+                una forte sensibilità per la narrazione visiva. Anche se ora il
+                mio focus principale è lo sviluppo, traggo ancora ispirazione da
+                quelle basi 3D per portare una prospettiva unica nel mondo
+                digitale — fondendo forma, funzione e immaginazione.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="section-2" class="three container">
-      <h1>Guardando Avanti</h1>
-    </section>
+      <section id="section-2" class="three container">
+        <h1>Guardando Avanti</h1>
+      </section>
+    </div>
   </div>
 </template>
 
