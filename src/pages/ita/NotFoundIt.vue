@@ -5,9 +5,9 @@
       <span class="color-2">0</span>
       <span class="color-3">4</span>
     </h1>
-    <h2>Nulla di interessante qui.</h2>
-    <p>Forse hai sbagliato strada.</p>
-    <router-link to="/it/">Torna alla realtà</router-link>
+    <h2>Notevole.</h2>
+    <p>Hai cliccato dritto nel nulla. Bel colpo.</p>
+    <router-link to="/">Riprova, magari con più impegno</router-link>
   </div>
 </template>
 

@@ -31,8 +31,9 @@ const alertMessages = [
   "You seem like a Bombardiro Crocodilo fan.",
   "Ever considered doing actual work?",
   "Sure, keep going. I’ve got all day.",
-  "This is literally a waste of everyone’s time.",
   "Maybe that works with your grandma, not here.",
+  "You must be the smart one in your group, huh?",
+  "Big brain energy detected. Contain it, please.",
 ];
 
 function handleClickSpam() {
