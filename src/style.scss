@@ -9,24 +9,21 @@
     box-sizing: border-box;
 
 }
+html {
+  overflow-x: hidden;
+}
+
 body{
     width: 100vw;
     font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    h1, h2, h3, p {
+      font-family: 'Poppins', sans-serif;
+      
+    }
 }
 
-h1, h2, h3, p {
-    font-family: 'Poppins', sans-serif;
-    
-  }
-
-
   //Darkmode
-
-
-  html, body {
-    overflow-x: hidden;
-  }
-
   
   body.dark-mode {
     background-color: #121212;
@@ -41,11 +38,6 @@ h1, h2, h3, p {
         filter: invert(1);
     }
 
-
-    .navbar {
-     // background-color: #1a1a1a !important;
-    }
-  
     .nav-link {
       color: #ffffff !important;
     }

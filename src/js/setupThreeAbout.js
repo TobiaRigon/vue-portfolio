@@ -63,7 +63,7 @@ export function setupThreeAbout(canvas) {
 
   const clock = new THREE.Clock();
 
-  const boundFactor = 1.1; // 110%% del bordo per rimbalzo
+  const boundFactor = 1.05; // 110%% del bordo per rimbalzo
 
   const tick = () => {
     const elapsed = clock.getElapsedTime();
