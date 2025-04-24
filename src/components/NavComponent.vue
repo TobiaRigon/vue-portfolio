@@ -111,6 +111,7 @@ onMounted(() => {
   padding: 0;
   z-index: 1001;
   outline: none;
+  transition: transform 0.3s ease, margin-top 0.2s ease 0.2s;
 
   &:focus,
   &:focus-visible,
@@ -147,6 +148,19 @@ body.dark-mode {
 }
 
 /* Trasformazione in X quando aperto */
+
+/* Rotazione dell'intero bottone quando è aperto */
+.navbar-toggler.open {
+  margin-top: 10px;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease, margin-top 0.2s ease 0s;
+}
+
+/* Al passaggio del mouse, torna dritto */
+.navbar-toggler.open:hover {
+  transform: rotate(0deg);
+}
+
 .navbar-toggler.open .burger-line:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
@@ -154,6 +168,9 @@ body.dark-mode {
   opacity: 0;
 }
 .navbar-toggler.open .burger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(8px, -9px);
+}
+.navbar-toggler.open .burger-line:nth-child(3):hover {
   transform: rotate(-45deg) translate(8px, -8px);
 }
 
