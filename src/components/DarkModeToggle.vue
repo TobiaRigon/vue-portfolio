@@ -58,7 +58,7 @@ $mode-toggle-bg: #262626;
   cursor: pointer;
   z-index: 2;
   appearance: none;
-  transition: background-color 0.5s ease;
+  transition: background-color 1.5s ease;
 
   height: 100%;
   display: flex;
@@ -76,7 +76,7 @@ $mode-toggle-bg: #262626;
     border: 3px solid transparent;
     box-shadow: inset 0 0 0 2px black;
     overflow: hidden;
-    transition: transform 0.5s ease;
+    transition: transform 1.5s ease;
 
     #toggle-icon {
       position: relative;
@@ -93,8 +93,8 @@ $mode-toggle-bg: #262626;
         left: 50%;
         float: left;
         background-color: black;
-        transition: border-radius 0.5s ease, width 0.5s ease, height 0.5s ease,
-          left 0.5s ease, transform 0.5s ease;
+        transition: border-radius 1.5s ease, width 1.5s ease, height 1.5s ease,
+          left 1.5s ease, transform 1.5s ease;
       }
     }
   }

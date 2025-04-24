@@ -14,6 +14,7 @@ html {
 }
 
 body{
+  transition: background-color 1.5s ease, color 1.5s ease, border-color 1.5s ease;
     width: 100vw;
     font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
