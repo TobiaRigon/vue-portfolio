@@ -80,7 +80,7 @@ router.afterEach((to, from) => {
     return;
   }
 
-  soundManager.play('pageTransition');
+  soundManager.play('menuClick');
   lastPath = to.fullPath;
 });
 

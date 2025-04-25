@@ -11,6 +11,7 @@
     </router-view>
 
     <FooterComponent />
+    <AudioToggle />
   </div>
 </template>
 
@@ -21,6 +22,7 @@ import ThreeAboutCanvas from "../components/ThreeAboutCanvas.vue";
 import ThreeDevOpsCanvas from "../components/ThreeDevOpsCanvas.vue";
 import Loader from "../components/Loader.vue";
 import { preloadProjects } from "../js/loadAllProjects";
+import AudioToggle from "../components/AudioToggle.vue"; // IMPORTA QUI
 
 export default {
   components: {
@@ -29,6 +31,7 @@ export default {
     ThreeAboutCanvas,
     ThreeDevOpsCanvas,
     Loader,
+    AudioToggle,
   },
   computed: {
     isAboutPage() {
