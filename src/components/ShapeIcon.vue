@@ -15,12 +15,15 @@
 import { ref, watch, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import EasterEggBanner from "./EasterEggBanner.vue";
+import { soundManager } from "../js/SoundManager"; // importa il gestore suoni
+
 
 const route = useRoute();
 const currentShape = ref("triangle");
 const easter = ref(null);
 
 const handleShapeClick = () => {
+  soundManager.play("menuClick");
   easter.value?.handleClickSpam();
 
   if (currentShape.value === "triangle") currentShape.value = "square";

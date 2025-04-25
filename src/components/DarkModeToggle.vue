@@ -57,7 +57,7 @@ export default {
         // Dopo 5 secondi, abbassa il volume
         this.fadeTimeout = setTimeout(() => {
           sound.fade(0.5, 0.2, 2000, id);
-        }, 5000);
+        }, 3000);
 
         // Dopo 10 secondi, abbassa e stoppa
         this.stopTimeout = setTimeout(() => {
@@ -65,7 +65,7 @@ export default {
           setTimeout(() => {
             sound.stop(id);
           }, 2000);
-        }, 10000);
+        }, 6000);
       }
 
       // Cambia il background musicale

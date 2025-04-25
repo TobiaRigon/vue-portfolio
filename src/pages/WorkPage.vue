@@ -2,6 +2,7 @@
 import { setupThree, destroyThree } from "../js/threeWork.js";
 import Project from "../components/Project.vue";
 import { projectCache } from "../js/projectCache";
+import { soundManager } from "../js/SoundManager"; 
 
 export default {
   components: {
@@ -29,6 +30,7 @@ export default {
       if (page >= 1 && page <= this.totalPages) {
         this.currentPage = page;
         window.scrollTo({ top: 0, behavior: "smooth" });
+        soundManager.play("menuClick"); 
       }
     },
     nextPage() {

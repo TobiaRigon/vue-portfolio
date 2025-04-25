@@ -3,16 +3,14 @@ import { Howl, Howler } from "howler";
 class SoundManager {
   constructor() {
     this.sounds = {
-      pageTransition: new Howl({ src: ['/sounds/page-transition.wav'], volume: 0.5 }),
-      menuOpen: new Howl({ src: ['/sounds/menu-open.mp3'], volume: 0.5 }),
-      menuClose: new Howl({ src: ['/sounds/menu-close.mp3'], volume: 0.5 }),
-      paginationClick: new Howl({ src: ['/sounds/pagination-click.mp3'], volume: 0.5 }),
-      darkMode: new Howl({ src: ['/sounds/darkmode.wav'], volume: 0.5 }),
-      lightMode: new Howl({ src: ['/sounds/lightmode.wav'], volume: 0.5 }),
-      backgroundLight: new Howl({ src: ['/sounds/background-light.mp3'], loop: true, volume: 0.3 }),
-      backgroundDark: new Howl({ src: ['/sounds/background-dark.mp3'], loop: true, volume: 0.3 }),
-    };
-
+        pageTransition: new Howl({ src: ['/sounds/mixkit-arrow-whoosh-1491.wav'], volume: 0.5 }),
+        menuClick: new Howl({ src: ['/sounds/click.wav'], volume: 0.5 }), // nuovo suono unico
+        darkMode: new Howl({ src: ['/sounds/darkmode.wav'], volume: 0.5 }),
+        lightMode: new Howl({ src: ['/sounds/lightmode.wav'], volume: 0.5 }),
+        backgroundLight: new Howl({ src: ['/sounds/background-light.mp3'], loop: true, volume: 0.3 }),
+        backgroundDark: new Howl({ src: ['/sounds/background-dark.mp3'], loop: true, volume: 0.3 }),
+      };
+      
     this.isMuted = false;
     this.currentBackground = null;
   }

@@ -65,6 +65,8 @@ import { ref, onMounted, onUnmounted } from "vue";
 import DarkModeToggle from "./DarkModeToggle.vue";
 import LangSwitcher from "./LangSwitcher.vue";
 import { useLang } from "../js/userLang";
+import { soundManager } from "../js/SoundManager"; // importa il gestore suoni
+
 
 const lang = useLang();
 const isOpen = ref(false);
@@ -76,6 +78,7 @@ const handleResize = () => {
 };
 
 const toggleNav = () => {
+  soundManager.play("menuClick"); 
   isOpen.value = !isOpen.value; // attiva subito l'animazione visiva
 };
 
