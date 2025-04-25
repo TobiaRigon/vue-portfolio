@@ -45,12 +45,6 @@
 <script>
 export default {
   name: "DevOpsPage",
-  mounted() {
-    // Preparazione futura: animazioni, dati, ecc.
-  },
-  unmounted() {
-    // Pulisci se serve
-  },
 };
 </script>
 

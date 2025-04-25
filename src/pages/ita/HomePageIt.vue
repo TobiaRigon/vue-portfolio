@@ -3,8 +3,23 @@ import { setupThree, destroyThree } from "../../js/threeSetup.js";
 
 export default {
   mounted() {
+  // Forza il rendering anche se il menu hamburger è aperto
+  this.$nextTick(() => {
     setupThree(this.$refs.canvas);
-  },
+
+    // Dopo 200ms forzi un resize della canvas, per sicurezza (optional ma consigliato)
+    setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+    }, 200);
+  });
+},
+
+methods: {
+  startThreeOnce() {
+    setupThree(this.$refs.canvas);
+  }
+},
+
   unmounted() {
     destroyThree();
   },

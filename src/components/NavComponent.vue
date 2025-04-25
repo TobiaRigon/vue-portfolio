@@ -99,6 +99,26 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+
+#navbarNav {
+  position: absolute; // o fixed se preferisci
+  top: 60px; // distanza dal top dopo la navbar
+  right: 0;
+  left: 0;
+  background: transparent; // sfondo chiaro per il menu aperto
+  z-index: 2000;
+  //box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.collapse:not(.show) {
+  display: none;
+}
+
+.collapse.show {
+  display: block;
+}
+
 .navbar-toggler {
   width: 30px;
   height: 20px;
