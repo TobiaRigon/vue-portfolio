@@ -14,11 +14,15 @@
 </template>
 
 <script>
+import { soundManager } from "../js/SoundManager";
+
 export default {
   name: "DarkModeToggle",
   data() {
     return {
       isDark: false,
+      fadeTimeout: null,
+      stopTimeout: null,
     };
   },
   mounted() {
@@ -26,6 +30,9 @@ export default {
     if (saved === "true") {
       this.isDark = true;
       document.body.classList.add("dark-mode");
+      soundManager.switchBackground('dark');
+    } else {
+      soundManager.switchBackground('light');
     }
   },
   methods: {
@@ -33,10 +40,45 @@ export default {
       this.isDark = !this.isDark;
       localStorage.setItem("darkMode", this.isDark);
       document.body.classList.toggle("dark-mode", this.isDark);
+
+      // Stoppa eventuali suoni dark/light già in corso
+      soundManager.stopAllModeSounds();
+
+      // Pulisci eventuali timeout
+      clearTimeout(this.fadeTimeout);
+      clearTimeout(this.stopTimeout);
+
+      const soundName = this.isDark ? 'darkMode' : 'lightMode';
+      const sound = soundManager.sounds[soundName];
+
+      if (sound && !soundManager.isMuted) {
+        const id = sound.play();
+
+        // Dopo 5 secondi, abbassa il volume
+        this.fadeTimeout = setTimeout(() => {
+          sound.fade(0.5, 0.2, 2000, id);
+        }, 5000);
+
+        // Dopo 10 secondi, abbassa e stoppa
+        this.stopTimeout = setTimeout(() => {
+          sound.fade(0.2, 0, 2000, id);
+          setTimeout(() => {
+            sound.stop(id);
+          }, 2000);
+        }, 10000);
+      }
+
+      // Cambia il background musicale
+      if (this.isDark) {
+        soundManager.switchBackground('dark');
+      } else {
+        soundManager.switchBackground('light');
+      }
     },
   },
 };
 </script>
+
 
 <style scoped lang="scss">
 $dark: #171717;

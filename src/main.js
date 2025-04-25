@@ -2,6 +2,9 @@ import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 import { createHead } from '@vueuse/head'
+import { soundManager } from './js/SoundManager.js';
+
+
 
 import './style.scss'
 import 'bootstrap/dist/css/bootstrap.css';
@@ -59,9 +62,28 @@ const router = createRouter({
 })
 
 
-router.afterEach(() => {
-    window.scrollTo(0, 0); // Sposta la finestra in cima alla pagina
+let firstLoad = true;
+let lastPath = null;
+
+router.afterEach((to, from) => {
+  window.scrollTo(0, 0);
+
+  // Evita il suono al primo caricamento
+  if (firstLoad) {
+    firstLoad = false;
+    lastPath = to.fullPath;
+    return;
+  }
+
+  // Se torni sulla stessa pagina (es: it -> it), non suona
+  if (to.fullPath === lastPath) {
+    return;
+  }
+
+  soundManager.play('pageTransition');
+  lastPath = to.fullPath;
 });
+
 
 const app = createApp(MainLayout)
 
