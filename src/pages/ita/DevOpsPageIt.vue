@@ -15,8 +15,8 @@
             Il dominio è registrato tramite Namecheap, dove gestisco anche le
             impostazioni DNS e collego il dominio alla configurazione del mio IP
             dinamico. HTTPS è abilitato tramite Let’s Encrypt e si rinnova
-            automaticamente con un cron job. I deploy vengono effettuati via SSH
-            tramite uno script semplice dal mio computer di sviluppo.
+            automaticamente con un cron job. I deploy vengono effettuati
+            tramite uno script semplice dal mio Raspberry.
           </p>
           <p class="mx-2">
             Ho ottimizzato Raspberry Pi OS e Apache per garantire buone
