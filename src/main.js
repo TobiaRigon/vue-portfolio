@@ -2,7 +2,6 @@ import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 import { soundManager } from './js/SoundManager.js';
-import { inject } from '@vercel/analytics';
 
 
 
@@ -89,7 +88,3 @@ const app = createApp(MainLayout)
 
 app.use(router)
 app.mount('#app')
-
-if (import.meta.env.PROD) {
-  inject();
-}

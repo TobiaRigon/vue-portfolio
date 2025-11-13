@@ -23,6 +23,9 @@ import ThreeDevOpsCanvas from "../components/ThreeDevOpsCanvas.vue";
 import Loader from "../components/Loader.vue";
 import { preloadProjects } from "../js/loadAllProjects";
 import AudioToggle from "../components/AudioToggle.vue";
+import { inject as injectAnalytics } from "@vercel/analytics";
+
+injectAnalytics();
 
 export default {
   components: {
