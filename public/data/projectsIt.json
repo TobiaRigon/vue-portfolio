@@ -1,5 +1,13 @@
 [
   {
+    "title": "DiscreetTab",
+    "technology": "Estensione Chrome",
+    "githubUrl": "https://github.com/TobiaRigon/DiscreetTab",
+    "siteUrl": "https://discreettab.tobiarigon.com/",
+    "description": "Sviluppo di un'estensione Chrome leggera incentrata sulla privacy, che consente agli utenti di nascondere titoli e favicon delle schede. Include formati di titolo personalizzabili, memoria per dominio con sincronizzazione tramite Chrome Sync, modalità discreta temporanea e scorciatoia da tastiera per un’attivazione rapida. Tutte le funzionalità sono locali, senza raccolta di dati.",
+    "images": ["/DiscreetTab1.png", "/DiscreetTab2.png"]
+  },
+  {
     "title": "Kubix Link – NAV 365 Sync",
     "technology": "Progetto di Integrazione PHP",
     "description": "Sviluppo di un sistema di sincronizzazione bidirezionale tra Lectra Kubix Link (PLM) e Microsoft NAV 365 (ERP), utilizzando PHP, REST API e webhook. Il progetto ha comportato la gestione della coerenza dei dati e degli aggiornamenti in tempo reale tra entrambe le piattaforme. Mi sono occupato dello sviluppo back-end e dell’integrazione tra sistemi, garantendo una comunicazione robusta tra gli ambienti. Questo lavoro ha migliorato significativamente i flussi interni e l’accuratezza dei dati.",

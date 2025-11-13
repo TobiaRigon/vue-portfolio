@@ -22,7 +22,7 @@ import ThreeAboutCanvas from "../components/ThreeAboutCanvas.vue";
 import ThreeDevOpsCanvas from "../components/ThreeDevOpsCanvas.vue";
 import Loader from "../components/Loader.vue";
 import { preloadProjects } from "../js/loadAllProjects";
-import AudioToggle from "../components/AudioToggle.vue"; // IMPORTA QUI
+import AudioToggle from "../components/AudioToggle.vue";
 
 export default {
   components: {

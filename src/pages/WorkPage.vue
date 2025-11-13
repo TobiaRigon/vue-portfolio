@@ -10,12 +10,15 @@ export default {
   },
   data() {
     return {
-      projects: [],
       currentPage: 1,
       perPage: 3,
     };
   },
   computed: {
+    projects() {
+      const langKey = this.$route.path.includes("/it") ? "it" : "en";
+      return projectCache[langKey] || [];
+    },
     totalPages() {
       return Math.ceil(this.projects.length / this.perPage);
     },
@@ -43,14 +46,6 @@ export default {
         this.changePage(this.currentPage - 1);
       }
     },
-    loadFromCache() {
-      const langKey = this.$route.path.includes("/it") ? "it" : "en";
-      if (projectCache[langKey]?.length > 0) {
-        this.projects = projectCache[langKey];
-      } else {
-        console.warn("Progetti non in cache");
-      }
-    },
   },
   mounted() {
     const loader = this.$root.$refs.loader;
@@ -58,8 +53,6 @@ export default {
     const hasCache = projectCache[langKey]?.length > 0;
 
     if (!hasCache && loader?.show) loader.show();
-
-    this.loadFromCache();
 
     if (!hasCache && loader?.hide) {
       setTimeout(() => loader.hide(), 200);

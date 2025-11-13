@@ -5,9 +5,14 @@
         <div class="titolo col-12 col-md-4">
           <h2>{{ project.title }}</h2>
           <h4>{{ project.technology }}</h4>
-          <a v-if="project.githubUrl" :href="project.githubUrl"
-            ><i class="fa-brands fa-github"></i
-          ></a>
+          <div class="links">
+            <a v-if="project.siteUrl" :href="project.siteUrl" class="me-2" target="_blank" rel="noopener">
+              <i class="fa-solid fa-link"></i>
+            </a>
+            <a v-if="project.githubUrl" :href="project.githubUrl" target="_blank" rel="noopener">
+              <i class="fa-brands fa-github"></i>
+            </a>
+          </div>
         </div>
         <div class="descrizione col-12 col-md-6">
           <p>
@@ -111,5 +116,11 @@ p {
 a {
   color: black;
   font-size: 22px;
+}
+
+.links {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 </style>

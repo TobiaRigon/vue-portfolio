@@ -11,12 +11,15 @@ export default {
   },
   data() {
     return {
-      projects: [],
       currentPage: 1,
       perPage: 3,
     };
   },
   computed: {
+    projects() {
+      const langKey = this.$route.path.includes("/it") ? "it" : "en";
+      return projectCache[langKey] || [];
+    },
     totalPages() {
       return Math.ceil(this.projects.length / this.perPage);
     },
@@ -45,19 +48,8 @@ export default {
         this.changePage(this.currentPage - 1);
       }
     },
-    loadFromCache() {
-      const isItalian = this.$route.path.includes("/it");
-      const langKey = isItalian ? "it" : "en";
-
-      if (projectCache[langKey] && projectCache[langKey].length > 0) {
-        this.projects = projectCache[langKey];
-      } else {
-        console.warn("Progetti non presenti in cache.");
-      }
-    },
   },
   mounted() {
-    this.loadFromCache();
     setupThree(this.$refs.canvas);
   },
   unmounted() {
