@@ -1,8 +1,8 @@
 import * as THREE from "three";
 import gsap from "gsap";
 
-let scene, camera, renderer, mainGeo, observer;
-let clock, animationId;
+let scene, camera, renderer, mainGeo, sectionsObserver, startObserver;
+let clock, animationId, resizeHandler;
 
 export function setupThree(canvas) {
   scene = new THREE.Scene();
@@ -57,9 +57,10 @@ setTimeout(() => {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
   const sectionEls = document.querySelectorAll("section");
+  const snapContainer = document.querySelector(".snap-container");
   let currentSection = 0;
 
-  observer = new IntersectionObserver((entries) => {
+  sectionsObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const id = entry.target.id;
@@ -88,21 +89,9 @@ setTimeout(() => {
         }
       }
     });
-  }, { root: null, threshold: 0.6 });
+  }, { root: snapContainer || null, threshold: 0.6 });
 
-  sectionEls.forEach((el) => observer.observe(el));
-
-  const startOnce = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        startOnce.disconnect();
-        tick();
-      }
-    });
-  }, { threshold: 0.9 });
-
-  const firstSection = document.getElementById("section-0");
-  if (firstSection) startOnce.observe(firstSection);
+  sectionEls.forEach((el) => sectionsObserver.observe(el));
 
   clock = new THREE.Clock();
   const tick = () => {
@@ -116,6 +105,41 @@ setTimeout(() => {
     renderer.render(scene, camera);
     animationId = window.requestAnimationFrame(tick);
   };
+
+  const startAnimation = () => {
+    if (animationId) return;
+    tick();
+  };
+
+  const startOnce = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        startOnce.disconnect();
+        startObserver = null;
+        startAnimation();
+      }
+    });
+  }, { root: snapContainer || null, threshold: 0.9 });
+
+  const firstSection = document.getElementById("section-0");
+  if (firstSection) {
+    startObserver = startOnce;
+    startOnce.observe(firstSection);
+  } else {
+    startAnimation();
+  }
+
+  resizeHandler = () => {
+    if (!renderer || !camera) return;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  };
+
+  window.addEventListener("resize", resizeHandler, { passive: true });
 }
 
 export function destroyThree() {
@@ -124,9 +148,14 @@ export function destroyThree() {
     animationId = null;
   }
 
-  if (observer) {
-    observer.disconnect();
-    observer = null;
+  if (sectionsObserver) {
+    sectionsObserver.disconnect();
+    sectionsObserver = null;
+  }
+
+  if (startObserver) {
+    startObserver.disconnect();
+    startObserver = null;
   }
 
   if (mainGeo) {
@@ -141,6 +170,11 @@ export function destroyThree() {
     renderer.forceContextLoss?.();
     renderer.domElement?.remove();
     renderer = null;
+  }
+
+  if (resizeHandler) {
+    window.removeEventListener("resize", resizeHandler);
+    resizeHandler = null;
   }
 
   camera = null;
