@@ -66,6 +66,7 @@ export default {
     </section>
 
     <section class="container">
+      <p class="work-intro">{{ $t('work.intro') }}</p>
       <Project
         v-for="project in paginatedProjects"
         :key="project.title"
@@ -125,6 +126,17 @@ section {
 
 .page-link {
   color: #000000;
+}
+
+.work-intro {
+  max-width: 680px;
+  margin: 60px auto 0;
+  padding: 0 15px;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.7;
+  opacity: 0.7;
+  text-align: center;
 }
 
 body.dark-mode {
