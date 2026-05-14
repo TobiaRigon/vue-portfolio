@@ -1,90 +1,86 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import { createI18n } from 'vue-i18n'
 
-import { soundManager } from './js/SoundManager.js';
-
-
+import { soundManager } from './js/SoundManager.js'
+import { useLang } from './js/userLang.js'
 
 import './style.scss'
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap'
 
-import MainLayout  from './layouts/MainLayout.vue'
+import en from './locales/en.json'
+import it from './locales/it.json'
+
+import MainLayout from './layouts/MainLayout.vue'
 import HomePage from './pages/HomePage.vue'
-import HomePageIt from './pages/ita/HomePageIt.vue'
 import AboutPage from './pages/AboutPage.vue'
-import AboutPageIt from './pages/ita/AboutPageIt.vue'
 import WorkPage from './pages/WorkPage.vue'
-import WorkPageIt from './pages/ita/WorkPageIt.vue'
-import DevOpsPage from './pages/DevOpsPage.vue';
-import DevOpsPageIt from './pages/ita/DevOpsPageIt.vue';
-import NotFound from './pages/NotFound.vue';
-import NotFoundIt from './pages/ita/NotFoundIt.vue';        
-
-
-const routes = [
-    { path: '/', redirect: () => getPreferredLocale() },
-
-    // Inglese
-    { path: '/en', component: HomePage },
-    { path: '/en/about', component: AboutPage },
-    { path: '/en/work', component: WorkPage },
-    { path: '/en/devops', component: DevOpsPage },
-
-    // Italiano
-    { path: '/it', component: HomePageIt },
-     { path: '/it/about', component: AboutPageIt },
-     { path: '/it/work', component: WorkPageIt },
-    { path: '/it/devops', component: DevOpsPageIt },
-
-     // Catch-all (404)
-     { path: '/it/:pathMatch(.*)*', name: 'NotFoundIt', component: NotFoundIt },
-     // Catch-all (404)
-     { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound }
-]
+import DevOpsPage from './pages/DevOpsPage.vue'
+import NotFound from './pages/NotFound.vue'
 
 function getPreferredLocale() {
-    const saved = localStorage.getItem('preferredLang');
-    if (saved) return `/${saved}`;
+  const saved = localStorage.getItem('preferredLang')
+  if (saved) return `/${saved}`
 
-    const lang = navigator.language || navigator.userLanguage;
-    if (lang.startsWith('it')) return '/it';
-    return '/en';
+  const lang = navigator.language || navigator.userLanguage
+  if (lang.startsWith('it')) return '/it'
+  return '/en'
 }
 
-  
-
+const routes = [
+  { path: '/', redirect: () => getPreferredLocale() },
+  { path: '/en', component: HomePage },
+  { path: '/en/about', component: AboutPage },
+  { path: '/en/work', component: WorkPage },
+  { path: '/en/devops', component: DevOpsPage },
+  { path: '/it', component: HomePage },
+  { path: '/it/about', component: AboutPage },
+  { path: '/it/work', component: WorkPage },
+  { path: '/it/devops', component: DevOpsPage },
+  { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
+]
 
 const router = createRouter({
-    history: createWebHistory(),
-    routes,
+  history: createWebHistory(),
+  routes,
 })
 
+const lang = useLang()
 
-let firstLoad = true;
-let lastPath = null;
+const i18n = createI18n({
+  legacy: false,
+  locale: lang.value,
+  fallbackLocale: 'en',
+  messages: { en, it },
+})
 
-router.afterEach((to, from) => {
-  window.scrollTo(0, 0);
+// Sincronizza la locale i18n con il cambio di lang via URL
+router.afterEach((to) => {
+  window.scrollTo(0, 0)
+  const segment = to.path.split('/')[1]
+  if (segment === 'it' || segment === 'en') {
+    i18n.global.locale.value = segment
+    lang.value = segment
+    localStorage.setItem('preferredLang', segment)
+  }
+})
 
-  // Evita il suono al primo caricamento
+let firstLoad = true
+let lastPath = null
+
+router.afterEach((to) => {
   if (firstLoad) {
-    firstLoad = false;
-    lastPath = to.fullPath;
-    return;
+    firstLoad = false
+    lastPath = to.fullPath
+    return
   }
-
-  // Se torni sulla stessa pagina (es: it -> it), non suona
-  if (to.fullPath === lastPath) {
-    return;
-  }
-
-  soundManager.play('menuClick');
-  lastPath = to.fullPath;
-});
-
+  if (to.fullPath === lastPath) return
+  soundManager.play('menuClick')
+  lastPath = to.fullPath
+})
 
 const app = createApp(MainLayout)
-
 app.use(router)
+app.use(i18n)
 app.mount('#app')

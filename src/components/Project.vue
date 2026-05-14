@@ -15,20 +15,14 @@
           </div>
         </div>
         <div class="descrizione col-12 col-md-6">
-          <p>
-            {{ project.description }}
-          </p>
+          <p>{{ project.description }}</p>
         </div>
       </div>
-      <!-- Carousel -->
       <div class="container">
         <swiper
           :spaceBetween="30"
           :centeredSlides="true"
-          :autoplay="{
-            delay: 2500,
-            disableOnInteraction: false,
-          }"
+          :autoplay="{ delay: 2500, disableOnInteraction: false }"
           :loop="true"
           :navigation="true"
           :modules="modules"
@@ -39,7 +33,7 @@
             v-for="(image, index) in project.images"
             :key="index"
           >
-            <img :src="image" alt="Placeholder" />
+            <img :src="image" :alt="project.title" />
           </swiper-slide>
         </swiper>
       </div>
@@ -64,26 +58,8 @@ export default {
     SwiperSlide,
   },
   setup() {
-    const onSwiper = (swiper) => {
-      console.log(swiper);
-    };
-    const onSlideChange = () => {
-      console.log("slide change");
-    };
-
     return {
-      onSwiper,
-      onSlideChange,
       modules: [Autoplay, Navigation],
-    };
-  },
-  data() {
-    return {
-      swiperOptions: {
-        autoplay: {
-          delay: 5000, // Delay in milliseconds
-        },
-      },
     };
   },
 };
@@ -94,7 +70,6 @@ img {
   max-width: 99%;
   box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.1);
   height: auto;
-  box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.1);
   object-fit: contain;
 }
 .swiper-slide {

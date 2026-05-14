@@ -1,0 +1,52 @@
+{
+  "home": {
+    "section0": {
+      "title": "Scopri il mio percorso nello sviluppo web.",
+      "body": "Il mio percorso nello sviluppo web è stato dinamico e gratificante. Ora lavoro come sviluppatore e specialista IT nel settore della moda di lusso, dove mi occupo della creazione e manutenzione di strumenti digitali che supportano flussi di lavoro complessi. Dalla programmazione di interfacce alla realizzazione di integrazioni tra sistemi, continuo ad affinare le mie competenze sia nel front-end che nel back-end — guidato sempre dalla creatività e dalla voglia di costruire esperienze digitali significative."
+    },
+    "section1": {
+      "title": "Esplorando le profondità della creazione 3D.",
+      "body": "Il mio background nel 3D continua a influenzare il mio approccio al design e alla risoluzione dei problemi. Dalla modellazione di personaggi alla creazione di ambienti immersivi, ho sviluppato una forte sensibilità per la narrazione visiva. Anche se ora il mio focus principale è lo sviluppo, traggo ancora ispirazione da quelle basi 3D per portare una prospettiva unica nel mondo digitale — fondendo forma, funzione e immaginazione."
+    },
+    "section2": "Guardando Avanti"
+  },
+  "about": {
+    "greeting": "Ciao!",
+    "bio": "Mi chiamo Tobia, sono un appassionato di 3D con una solida esperienza nel mondo della CGI. Vivo in Italia e mi sono spostato nel mondo dello sviluppo web e del supporto IT, dove ora lavoro a tempo pieno nell'industria della moda di lusso. Negli ultimi mesi ho partecipato allo sviluppo e alla manutenzione di sistemi aziendali cruciali, incluso lo sviluppo di un'integrazione personalizzata in PHP tra Lectra Kubix Link (PLM) e Microsoft NAV 365 (ERP). Attraverso questo sito puoi seguire il mio percorso mentre continuo a crescere come sviluppatore, combinando creatività e problem solving tecnico. La mia base nella CGI mi ha insegnato a creare esperienze visive immersive—competenze che ora porto anche nello sviluppo web, sia nel design di interfacce utente coinvolgenti che nella scrittura di logiche backend intelligenti. Quando non sto programmando, facendo debug o esplorando nuove tecnologie, mi trovi all'aperto, o intento a esplorare il confine tra arte e tecnologia. Dal 3D ai sistemi web, sono guidato da una profonda curiosità e dal desiderio di costruire cose che funzionino bene—e che abbiano un bel design. Grazie per essere passato nel mio portfolio. Esploriamo insieme il mondo in continua evoluzione di tecnologia e design!",
+    "aiTitle": "Il mio approccio alla programmazione nell'era dell'IA",
+    "aiBody": "Entrare nel mondo della programmazione negli ultimi anni significa crescere insieme all'evoluzione dell'intelligenza artificiale. Fin dall'inizio non l'ho vista come una minaccia, ma come uno strumento potente—qualcosa da capire, sperimentare e integrare nel mio flusso di lavoro quotidiano. Non pretendo di padroneggiare un linguaggio specifico, anche se ho più esperienza con PHP, JavaScript e Vue. Il mio focus è sulla logica, sui sistemi e sulla risoluzione dei problemi più che sulla sintassi. Credo che le competenze specifiche di linguaggio diventeranno sempre più fluide col tempo, e che l'adattabilità conterà più della memorizzazione. Detto questo, non uso l'IA in modo cieco. La uso come i programmatori esperti usano Stack Overflow o la documentazione: per imparare più velocemente, validare idee e non perdere tempo a reinventare ciò che esiste già. Alcuni dicono che l'IA stia rovinando la programmazione. È come dire che la macchina da scrivere ha rovinato la calligrafia, o che Google ha distrutto l'apprendimento perché non memorizziamo più le date. Gli strumenti non rendono le persone pigre—le persone lo fanno. Conta come li usi. Credo che saper usare l'IA in modo efficace sia una competenza come le altre—richiede tempo, pratica e pensiero critico. Chi la usa ciecamente, o la rifiuta del tutto, rimarrà indietro in entrambi i casi. Il futuro appartiene a chi saprà combinare intuizione umana e strumenti intelligenti in continua evoluzione. Il mio obiettivo è scrivere codice pulito, utile e crescere ogni giorno, unendo ragionamento e risorse moderne.",
+    "likesTitle": "What i Like",
+    "learningTitle": "What i'm Lerning"
+  },
+  "work": {
+    "cta": "Scrolla per vedere i miei ultimi progetti",
+    "prev": "Precedente",
+    "next": "Successivo"
+  },
+  "devops": {
+    "p1": "Questo sito è ospitato autonomamente su un Raspberry Pi 3, in esecuzione dalla mia rete locale. Apache serve i contenuti, con semplici regole di port forwarding e firewall configurate. Utilizzo un servizio di DNS dinamico per mantenere il sito raggiungibile nonostante l'indirizzo IP variabile fornito dal mio ISP.",
+    "p2": "Il dominio è registrato tramite Namecheap, dove gestisco anche le impostazioni DNS e collego il dominio alla configurazione del mio IP dinamico. HTTPS è abilitato tramite Let's Encrypt e si rinnova automaticamente con un cron job. I deploy vengono effettuati tramite uno script semplice dal mio Raspberry.",
+    "p3": "Ho ottimizzato Raspberry Pi OS e Apache per garantire buone prestazioni, in modo che il sito funzioni in modo fluido nonostante le limitazioni hardware. Non è progettato per gestire grandi volumi, ma per quello che fa, funziona in modo affidabile. Sono in atto misure di sicurezza di base per ridurre la superficie di attacco e mitigare i rischi.",
+    "p4": "Il monitoraggio viene eseguito manualmente e saltuariamente—quanto basta per tenere d'occhio le prestazioni e individuare eventuali problemi. Ho applicato tecniche SEO di base per rendere il sito indicizzabile senza complicarlo troppo. Questo setup esiste perché voglio imparare, ridurre i costi e mantenere il pieno controllo su ciò che costruisco—senza dipendere da servizi di hosting o cloud di terze parti.",
+    "p5": "È una configurazione modesta, ma che comprendo a fondo—ed è proprio questo il punto."
+  },
+  "notFound": {
+    "sets": [
+      {
+        "title": "Notevole.",
+        "message": "Hai cliccato dritto nel nulla. Complimenti vivissimi.",
+        "button": "Riprova, magari con più impegno"
+      },
+      {
+        "title": "Guarda chi c'è...",
+        "message": "Un giovane esploratore! E senza mappa, a quanto pare.",
+        "button": "Torna indietro finché sei in tempo"
+      },
+      {
+        "title": "Grande!",
+        "message": "Hai ufficialmente raggiunto il centro del nulla. Bravo davvero.",
+        "button": "Facciamo finta che non sia mai successo"
+      }
+    ]
+  }
+}

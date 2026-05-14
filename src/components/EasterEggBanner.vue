@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onUnmounted } from "vue";
 
 const currentAlertMessage = ref(null);
 let clickCount = 0;
@@ -49,7 +49,8 @@ function handleClickSpam() {
   }
 }
 
-// esponi il metodo
+onUnmounted(() => clearTimeout(clickTimeout));
+
 defineExpose({ handleClickSpam });
 </script>
 

@@ -2,6 +2,8 @@ import { loadProjectsFromJSON } from "./useProjects";
 import { projectCache } from "./projectCache";
 
 export async function preloadProjects() {
+  if (projectCache.loaded) return;
+
   try {
     const [it, en] = await Promise.all([
       loadProjectsFromJSON("projectsIt.json"),

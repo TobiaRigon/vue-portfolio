@@ -4,15 +4,17 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
-import { setupThreeAbout } from "../js/setupThreeAbout";
+import { onMounted, onUnmounted, ref } from "vue";
+import { setupThreeAbout, destroyThreeAbout } from "../js/setupThreeAbout";
 
 const canvas = ref(null);
 
 onMounted(() => {
-  if (canvas.value) {
-    setupThreeAbout(canvas.value);
-  }
+  if (canvas.value) setupThreeAbout(canvas.value);
+});
+
+onUnmounted(() => {
+  destroyThreeAbout();
 });
 </script>
 

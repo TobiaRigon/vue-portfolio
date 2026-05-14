@@ -78,25 +78,30 @@ const handleResize = () => {
 };
 
 const toggleNav = () => {
-  soundManager.play("menuClick"); 
-  isOpen.value = !isOpen.value; // attiva subito l'animazione visiva
+  soundManager.play("menuClick");
+  isOpen.value = !isOpen.value;
 };
 
-onUnmounted(() => {
-  window.removeEventListener("resize", handleResize);
-});
+const onCollapseShown = () => (isOpen.value = true);
+const onCollapseHidden = () => (isOpen.value = false);
+let collapseEl = null;
 
 onMounted(() => {
   window.addEventListener("resize", handleResize);
-  handleResize(); // inizializza
+  handleResize();
 
-  const collapse = document.getElementById("navbarNav");
-  if (collapse) {
-    collapse.addEventListener("shown.bs.collapse", () => (isOpen.value = true));
-    collapse.addEventListener(
-      "hidden.bs.collapse",
-      () => (isOpen.value = false)
-    );
+  collapseEl = document.getElementById("navbarNav");
+  if (collapseEl) {
+    collapseEl.addEventListener("shown.bs.collapse", onCollapseShown);
+    collapseEl.addEventListener("hidden.bs.collapse", onCollapseHidden);
+  }
+});
+
+onUnmounted(() => {
+  window.removeEventListener("resize", handleResize);
+  if (collapseEl) {
+    collapseEl.removeEventListener("shown.bs.collapse", onCollapseShown);
+    collapseEl.removeEventListener("hidden.bs.collapse", onCollapseHidden);
   }
 });
 </script>

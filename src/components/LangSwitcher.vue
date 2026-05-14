@@ -7,13 +7,11 @@
 <script setup>
 import { useRoute, useRouter } from "vue-router";
 import { useLang, switchLang } from "../js/userLang";
-import { computed } from "vue";
 
 const route = useRoute();
 const router = useRouter();
 
-const langRef = useLang(); // ref
-const lang = computed(() => langRef.value);
+const lang = useLang();
 
 function switchLanguage() {
   const segments = route.path.split("/").filter(Boolean);

@@ -51,7 +51,7 @@ export default {
       const soundName = this.isDark ? 'darkMode' : 'lightMode';
       const sound = soundManager.sounds[soundName];
 
-      if (sound && !soundManager.isMuted) {
+      if (sound && !soundManager.isMuted.value) {
         const id = sound.play();
 
         // Dopo 5 secondi, abbassa il volume
@@ -75,6 +75,10 @@ export default {
         soundManager.switchBackground('light');
       }
     },
+  },
+  beforeUnmount() {
+    clearTimeout(this.fadeTimeout);
+    clearTimeout(this.stopTimeout);
   },
 };
 </script>

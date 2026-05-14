@@ -36,6 +36,12 @@ export default {
     Loader,
     AudioToggle,
   },
+  provide() {
+    return {
+      showLoader: () => this.$refs.loader?.show(),
+      hideLoader: () => this.$refs.loader?.hide(),
+    };
+  },
   computed: {
     isAboutPage() {
       return this.$route.path.includes("/about");
@@ -49,24 +55,19 @@ export default {
 
     const loader = this.$refs.loader;
     const router = this.$router;
-
     let timeoutId = null;
 
     router.beforeEach((to, from, next) => {
-      // Forza lo spinner SOLO se il loading dura più di 300ms
       timeoutId = setTimeout(() => {
         loader.show();
       }, 300);
-
       next();
     });
 
     router.afterEach(() => {
       clearTimeout(timeoutId);
-
-      // Se lo spinner è stato attivato, fallo vedere per almeno un attimo
       if (loader.visible) {
-        setTimeout(() => loader.hide(), 500); // fade-out visibile
+        setTimeout(() => loader.hide(), 500);
       }
     });
   },

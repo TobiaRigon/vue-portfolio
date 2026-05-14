@@ -2,11 +2,15 @@
 import { setupThree, destroyThree } from "../js/threeWork.js";
 import Project from "../components/Project.vue";
 import { projectCache } from "../js/projectCache";
-import { soundManager } from "../js/SoundManager"; 
+import { soundManager } from "../js/SoundManager";
+import { useLang } from "../js/userLang";
 
 export default {
   components: {
     Project,
+  },
+  setup() {
+    return { lang: useLang() };
   },
   data() {
     return {
@@ -16,8 +20,7 @@ export default {
   },
   computed: {
     projects() {
-      const langKey = this.$route.path.includes("/it") ? "it" : "en";
-      return projectCache[langKey] || [];
+      return projectCache[this.lang] || [];
     },
     totalPages() {
       return Math.ceil(this.projects.length / this.perPage);
@@ -33,35 +36,21 @@ export default {
       if (page >= 1 && page <= this.totalPages) {
         this.currentPage = page;
         window.scrollTo({ top: 0, behavior: "smooth" });
-        soundManager.play("menuClick"); 
+        soundManager.play("menuClick");
       }
     },
     nextPage() {
-      if (this.currentPage < this.totalPages) {
-        this.changePage(this.currentPage + 1);
-      }
+      if (this.currentPage < this.totalPages) this.changePage(this.currentPage + 1);
     },
     prevPage() {
-      if (this.currentPage > 1) {
-        this.changePage(this.currentPage - 1);
-      }
+      if (this.currentPage > 1) this.changePage(this.currentPage - 1);
     },
   },
   mounted() {
-    const loader = this.$root.$refs.loader;
-    const langKey = this.$route.path.includes("/it") ? "it" : "en";
-    const hasCache = projectCache[langKey]?.length > 0;
-
-    if (!hasCache && loader?.show) loader.show();
-
-    if (!hasCache && loader?.hide) {
-      setTimeout(() => loader.hide(), 200);
-    }
-
     setupThree(this.$refs.canvas);
   },
   unmounted() {
-    destroyThree(); // Pulisci scena / renderer
+    destroyThree();
   },
 };
 </script>
@@ -70,7 +59,7 @@ export default {
   <div class="work-wrapper">
     <section class="position-relative jumbo">
       <h1 class="cta position-absolute">
-        Scroll down to see my latest projects
+        {{ $t('work.cta') }}
         <i class="fa-solid fa-chevron-down"></i>
       </h1>
       <canvas ref="canvas" class="webgl"></canvas>
@@ -83,11 +72,10 @@ export default {
         :project="project"
       />
 
-      <!-- Pagination controls -->
       <nav class="d-flex justify-content-center my-4">
         <ul class="pagination pagination-sm">
           <li class="page-item" :class="{ disabled: currentPage === 1 }">
-            <button class="page-link" @click="prevPage">Previous</button>
+            <button class="page-link" @click="prevPage">{{ $t('work.prev') }}</button>
           </li>
           <li
             class="page-item"
@@ -95,15 +83,10 @@ export default {
             :key="page"
             :class="{ active: currentPage === page }"
           >
-            <button class="page-link" @click="changePage(page)">
-              {{ page }}
-            </button>
+            <button class="page-link" @click="changePage(page)">{{ page }}</button>
           </li>
-          <li
-            class="page-item"
-            :class="{ disabled: currentPage === totalPages }"
-          >
-            <button class="page-link" @click="nextPage">Next</button>
+          <li class="page-item" :class="{ disabled: currentPage === totalPages }">
+            <button class="page-link" @click="nextPage">{{ $t('work.next') }}</button>
           </li>
         </ul>
       </nav>

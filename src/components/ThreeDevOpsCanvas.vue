@@ -3,13 +3,17 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
-import { setupThreeDevOps } from "../js/setupThreeDevOps";
+import { onMounted, onUnmounted, ref } from "vue";
+import { setupThreeDevOps, destroyThreeDevOps } from "../js/setupThreeDevOps";
 
 const canvas = ref(null);
 
 onMounted(() => {
   if (canvas.value) setupThreeDevOps(canvas.value);
+});
+
+onUnmounted(() => {
+  destroyThreeDevOps();
 });
 </script>
 

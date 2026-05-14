@@ -1,28 +1,21 @@
 <script>
-import { setupThree, destroyThree } from "../js/threeSetup.js"; // Assicurati di avere destroyThree()
+import { setupThree, destroyThree } from "../js/threeSetup.js";
 
 export default {
   mounted() {
-  // Forza il rendering anche se il menu hamburger è aperto
-  this.$nextTick(() => {
-    setupThree(this.$refs.canvas);
-
-    // Dopo 200ms forzi un resize della canvas, per sicurezza (optional ma consigliato)
-    setTimeout(() => {
-      window.dispatchEvent(new Event('resize'));
-    }, 200);
-  });
-},
-
+    this.$nextTick(() => {
+      setupThree(this.$refs.canvas);
+      setTimeout(() => window.dispatchEvent(new Event('resize')), 200);
+    });
+  },
   unmounted() {
-    destroyThree(); // pulizia scene, animation frame, ecc.
+    destroyThree();
   },
 };
 </script>
 
 <template>
   <div class="homepage-wrapper">
-    <div class="loader" ref="loader"></div>
     <canvas ref="canvas" class="webgl"></canvas>
 
     <div class="snap-container">
@@ -30,19 +23,8 @@ export default {
         <div class="mycontainer row">
           <div class="col-lg-6">
             <div class="hero">
-              <h2>
-                Unveiling My Journey in Web Development.
-                <!-- <h3>Embracing the World of Coding and Design</h3> -->
-              </h2>
-              <p>
-                My journey into web development has been dynamic and fulfilling.
-                Now working as a developer and IT specialist in the luxury
-                fashion industry, I focus on creating and maintaining digital
-                tools that support complex workflows. From coding interfaces to
-                building system integrations, I continue to sharpen my skills in
-                both front-end and back-end development—always driven by
-                creativity and a desire to build meaningful digital experiences.
-              </p>
+              <h2>{{ $t('home.section0.title') }}</h2>
+              <p>{{ $t('home.section0.body') }}</p>
             </div>
           </div>
         </div>
@@ -52,25 +34,15 @@ export default {
         <div class="mycontainer row flex-row-reverse">
           <div class="col-lg-6">
             <div class="hero">
-              <h2>
-                Exploring the Depths of 3D Creation.
-                <!-- <h3>Navigating the Boundless Realm of Virtual Artistry</h3> -->
-              </h2>
-              <p>
-                My background in 3D continues to influence how I approach design
-                and problem-solving. From character modeling to immersive
-                environments, I’ve developed a deep appreciation for visual
-                storytelling. Though my focus has shifted to development, I
-                still draw on those 3D foundations to bring a unique perspective
-                to the digital space—blending form, function, and imagination.
-              </p>
+              <h2>{{ $t('home.section1.title') }}</h2>
+              <p>{{ $t('home.section1.body') }}</p>
             </div>
           </div>
         </div>
       </section>
 
       <section id="section-2" class="three container">
-        <h1>Forging Forward</h1>
+        <h1>{{ $t('home.section2') }}</h1>
       </section>
     </div>
   </div>
@@ -146,7 +118,7 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: clamp(32px, 8vw, 90px); // Responsive
+  font-size: clamp(32px, 8vw, 90px);
   line-height: 1.1;
   font-weight: 700;
   text-align: center;

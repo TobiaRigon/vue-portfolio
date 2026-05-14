@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 let scene, camera, renderer, mainGeo, raycaster, mouse, controls;
-let onMouseClickHandler;
+let onMouseClickHandler, animationId;
 
 export function setupThree(canvas) {
   scene = new THREE.Scene();
@@ -88,13 +88,18 @@ export function setupThree(canvas) {
 
     controls.update();
     renderer.render(scene, camera);
-    window.requestAnimationFrame(tick);
+    animationId = window.requestAnimationFrame(tick);
   };
 
   tick();
 }
 
 export function destroyThree() {
+  if (animationId !== null) {
+    cancelAnimationFrame(animationId);
+    animationId = null;
+  }
+
   window.removeEventListener("click", onMouseClickHandler);
 
   if (mainGeo) {
