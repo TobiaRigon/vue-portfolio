@@ -11,8 +11,9 @@ class SoundManager {
         backgroundDark: new Howl({ src: ['/sounds/background-dark.mp3'], loop: true, volume: 0.3 }),
       };
       
-    this.isMuted = false;
+    this.isMuted = true;
     this.currentBackground = null;
+    Howler.mute(true);
   }
 
   play(name) {
