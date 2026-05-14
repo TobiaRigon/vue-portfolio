@@ -30,6 +30,11 @@
 
   </head>
   <body>
+    <script>
+      if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+      }
+    </script>
     <div id="app"></div>
     
     <script type="module" src="./src/main.js"></script>

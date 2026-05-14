@@ -30,7 +30,7 @@
           class="navbar-nav ms-auto text-end align-items-end flex-column flex-md-row"
         >
           <li class="nav-item">
-            <router-link :to="`/${lang}`" class="nav-link">Home</router-link>
+            <a class="nav-link" href="#" @click.prevent="goHome">Home</a>
           </li>
           <li class="nav-item">
             <router-link :to="`/${lang}/about`" class="nav-link"
@@ -56,13 +56,25 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import DarkModeToggle from "./DarkModeToggle.vue";
 import LangSwitcher from "./LangSwitcher.vue";
 import { useLang } from "../js/userLang";
-import { soundManager } from "../js/SoundManager"; // importa il gestore suoni
-
+import { soundManager } from "../js/SoundManager";
 
 const lang = useLang();
+const route = useRoute();
+const router = useRouter();
+
+function goHome() {
+  const homePath = `/${lang.value}`;
+  if (route.path === homePath) {
+    const snapContainer = document.querySelector('.snap-container');
+    if (snapContainer) snapContainer.scrollTo({ top: 0, behavior: 'smooth' });
+  } else {
+    router.push(homePath);
+  }
+}
 const isOpen = ref(false);
 
 const isMobile = ref(window.innerWidth < 768);

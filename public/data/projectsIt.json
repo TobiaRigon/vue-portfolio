@@ -24,7 +24,7 @@
     "title": "Il Mio Portfolio",
     "technology": "Vetrina delle mie Competenze e Passioni",
     "githubUrl": "https://github.com/TobiaRigon/vue-portfolio",
-    "description": "Il mio portfolio è una vetrina digitale dove presento me stesso e i miei progetti personali. Utilizzando tecnologie moderne come Vue.js e Three.js, ho creato un ambiente interattivo per esplorare i miei lavori in modo fluido e intuitivo. Vue.js assicura un'esperienza di navigazione reattiva e senza interruzioni, mentre Three.js aggiunge un tocco immersivo dando vita ai progetti in 3D.",
+    "description": "Questo portfolio è costruito con Vue.js e Three.js. Struttura pulita, scelte pratiche, nessuna complessità superflua. Lo sfondo 3D è gestito con Three.js e GSAP, i contenuti sono bilingue tramite vue-i18n e il sito è distribuito su Vercel.",
     "images": ["/Portfolio1.png", "/Portfolio2.png", "/Portfolio3.png"]
   }
 ]

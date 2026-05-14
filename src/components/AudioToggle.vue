@@ -36,6 +36,11 @@ function toggleAudio() {
     transform: scale(1.1);
     opacity: 1;
   }
+
+  @media (max-width: 767px) {
+    left: auto;
+    right: 65px;
+  }
 }
 body.dark-mode {
   .audio-toggle {

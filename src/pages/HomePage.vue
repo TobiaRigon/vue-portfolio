@@ -11,18 +11,29 @@ export default {
   unmounted() {
     destroyThree();
   },
+  methods: {
+    scrollToTop() {
+      const container = this.$el.querySelector('.snap-container');
+      if (container) container.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+  },
 };
 </script>
 
 <template>
   <div class="homepage-wrapper">
     <canvas ref="canvas" class="webgl"></canvas>
+    <button class="scroll-top" @click="scrollToTop" aria-label="Torna in cima">
+      <i class="fa-solid fa-chevron-up"></i>
+    </button>
 
     <div class="snap-container">
       <section id="section-0" class="one container">
         <div class="mycontainer row">
           <div class="col-lg-6">
             <div class="hero">
+              <p class="intro-name">{{ $t('home.name') }}</p>
+              <p class="intro-role">{{ $t('home.role') }}</p>
               <h2>{{ $t('home.section0.title') }}</h2>
               <p>{{ $t('home.section0.body') }}</p>
             </div>
@@ -153,5 +164,52 @@ p {
   font-weight: 300;
   display: block;
   width: 100%;
+}
+
+.scroll-top {
+  display: none;
+  background: none;
+  border: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 18px;
+  z-index: 9999;
+  opacity: 0.9;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+
+  @media (max-width: 767px) {
+    display: block;
+    right: 110px;
+  }
+}
+
+body.dark-mode .scroll-top {
+  color: white;
+}
+
+.intro-name {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: 4px;
+}
+
+.intro-role {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 20px;
 }
 </style>
