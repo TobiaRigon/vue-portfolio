@@ -45,6 +45,7 @@
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
+import "swiper/css/navigation";
 
 export default {
   props: {
