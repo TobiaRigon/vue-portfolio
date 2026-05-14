@@ -33,21 +33,15 @@
             <router-link :to="`/${lang}`" class="nav-link">Home</router-link>
           </li>
           <li class="nav-item">
-            <router-link :to="`/${lang}/work`" class="nav-link"
-              >Work</router-link
-            >
-          </li>
-          <li class="nav-item">
             <router-link :to="`/${lang}/about`" class="nav-link"
               >About</router-link
             >
           </li>
           <li class="nav-item">
-            <router-link :to="`/${lang}/devops`" class="nav-link"
-              >DevOps</router-link
+            <router-link :to="`/${lang}/work`" class="nav-link"
+              >Work</router-link
             >
           </li>
-
           <li class="nav-item align-items-center">
             <DarkModeToggle />
           </li>

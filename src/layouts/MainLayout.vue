@@ -2,7 +2,6 @@
   <div>
     <Loader ref="loader" />
     <ThreeAboutCanvas v-if="isAboutPage" />
-    <ThreeDevOpsCanvas v-if="isDevOpsPage" />
     <HeaderComponent />
     <router-view v-slot="{ Component }">
       <transition name="page" mode="out-in">
@@ -19,7 +18,6 @@
 import HeaderComponent from "../components/HeaderComponent.vue";
 import FooterComponent from "../components/FooterComponent.vue";
 import ThreeAboutCanvas from "../components/ThreeAboutCanvas.vue";
-import ThreeDevOpsCanvas from "../components/ThreeDevOpsCanvas.vue";
 import Loader from "../components/Loader.vue";
 import { preloadProjects } from "../js/loadAllProjects";
 import AudioToggle from "../components/AudioToggle.vue";
@@ -32,7 +30,6 @@ export default {
     HeaderComponent,
     FooterComponent,
     ThreeAboutCanvas,
-    ThreeDevOpsCanvas,
     Loader,
     AudioToggle,
   },
@@ -45,9 +42,6 @@ export default {
   computed: {
     isAboutPage() {
       return this.$route.path.includes("/about");
-    },
-    isDevOpsPage() {
-      return this.$route.path.includes("/devops");
     },
   },
   mounted() {

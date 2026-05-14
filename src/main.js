@@ -16,7 +16,6 @@ import MainLayout from './layouts/MainLayout.vue'
 import HomePage from './pages/HomePage.vue'
 import AboutPage from './pages/AboutPage.vue'
 import WorkPage from './pages/WorkPage.vue'
-import DevOpsPage from './pages/DevOpsPage.vue'
 import NotFound from './pages/NotFound.vue'
 
 function getPreferredLocale() {
@@ -33,11 +32,9 @@ const routes = [
   { path: '/en', component: HomePage },
   { path: '/en/about', component: AboutPage },
   { path: '/en/work', component: WorkPage },
-  { path: '/en/devops', component: DevOpsPage },
   { path: '/it', component: HomePage },
   { path: '/it/about', component: AboutPage },
   { path: '/it/work', component: WorkPage },
-  { path: '/it/devops', component: DevOpsPage },
   { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
 ]
 

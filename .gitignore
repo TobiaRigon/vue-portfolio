@@ -25,3 +25,4 @@ dist-ssr
 .env
 /.claude
 PRD-refactor.md
+/prd
