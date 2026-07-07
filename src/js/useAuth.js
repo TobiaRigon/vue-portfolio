@@ -7,10 +7,21 @@ let initPromise = null;
 
 function init() {
   if (!initPromise) {
-    initPromise = supabase.auth.getSession().then(({ data }) => {
-      session.value = data.session;
-      initialized.value = true;
-    });
+    // Se il recupero sessione fallisce (rete/estensioni/Supabase irraggiungibile),
+    // la promise deve comunque risolversi: altrimenti la guardia di navigazione
+    // su /admin resta bloccata in attesa e la pagina appare vuota.
+    initPromise = supabase.auth
+      .getSession()
+      .then(({ data }) => {
+        session.value = data.session;
+      })
+      .catch((err) => {
+        console.error("Errore nel recupero della sessione Supabase:", err);
+        session.value = null;
+      })
+      .finally(() => {
+        initialized.value = true;
+      });
   }
   return initPromise;
 }
