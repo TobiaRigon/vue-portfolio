@@ -13,11 +13,16 @@ export default {
 
 <template>
   <div class="analytics-admin">
+    <p class="mb-2">
+      <a :href="shareUrl" target="_blank" rel="noopener">Apri Analytics in una nuova scheda ↗</a>
+      <span class="text-muted small"> — usa questo link se il riquadro sotto resta vuoto (alcuni browser bloccano i cookie di terze parti nelle dashboard incorporate)</span>
+    </p>
     <iframe
       :src="shareUrl"
       class="analytics-frame"
       title="Umami Analytics"
-      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      allow="clipboard-write"
     ></iframe>
   </div>
 </template>
