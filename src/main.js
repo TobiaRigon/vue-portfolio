@@ -1,22 +1,23 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import { createI18n } from 'vue-i18n'
 
 import { soundManager } from './js/SoundManager.js'
 import { useLang } from './js/userLang.js'
+import { i18n } from './i18n.js'
+import { loadTextsIntoI18n } from './js/loadTexts.js'
+import { waitForAuthReady, isAuthenticated } from './js/useAuth.js'
 
 import './style.scss'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap'
-
-import en from './locales/en.json'
-import it from './locales/it.json'
 
 import MainLayout from './layouts/MainLayout.vue'
 import HomePage from './pages/HomePage.vue'
 import AboutPage from './pages/AboutPage.vue'
 import WorkPage from './pages/WorkPage.vue'
 import NotFound from './pages/NotFound.vue'
+import AdminLogin from './pages/admin/AdminLogin.vue'
+import AdminDashboard from './pages/admin/AdminDashboard.vue'
 
 function getPreferredLocale() {
   const saved = localStorage.getItem('preferredLang')
@@ -35,6 +36,8 @@ const routes = [
   { path: '/it', component: HomePage },
   { path: '/it/about', component: AboutPage },
   { path: '/it/work', component: WorkPage },
+  { path: '/admin/login', component: AdminLogin },
+  { path: '/admin', component: AdminDashboard, meta: { requiresAuth: true } },
   { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
 ]
 
@@ -43,14 +46,14 @@ const router = createRouter({
   routes,
 })
 
-const lang = useLang()
-
-const i18n = createI18n({
-  legacy: false,
-  locale: lang.value,
-  fallbackLocale: 'en',
-  messages: { en, it },
+router.beforeEach(async (to) => {
+  if (!to.meta.requiresAuth) return true
+  await waitForAuthReady()
+  if (!isAuthenticated()) return '/admin/login'
+  return true
 })
+
+const lang = useLang()
 
 // Sincronizza la locale i18n con il cambio di lang via URL
 router.afterEach((to) => {
@@ -60,6 +63,7 @@ router.afterEach((to) => {
     i18n.global.locale.value = segment
     lang.value = segment
     localStorage.setItem('preferredLang', segment)
+    loadTextsIntoI18n(i18n, segment)
   }
 })
 
