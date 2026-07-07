@@ -1,10 +1,11 @@
 <script>
 import ProjectsAdmin from "../../components/admin/ProjectsAdmin.vue";
 import TextsAdmin from "../../components/admin/TextsAdmin.vue";
+import AnalyticsAdmin from "../../components/admin/AnalyticsAdmin.vue";
 import { logout } from "../../js/useAuth";
 
 export default {
-  components: { ProjectsAdmin, TextsAdmin },
+  components: { ProjectsAdmin, TextsAdmin, AnalyticsAdmin },
   data() {
     return {
       activeTab: "projects",
@@ -41,11 +42,19 @@ export default {
       >
         Testi
       </button>
+      <button
+        class="btn btn-sm ms-2"
+        :class="activeTab === 'analytics' ? 'btn-dark' : 'btn-outline-dark'"
+        @click="activeTab = 'analytics'"
+      >
+        Analytics
+      </button>
     </div>
 
     <div class="admin-tab-content">
       <ProjectsAdmin v-if="activeTab === 'projects'" />
-      <TextsAdmin v-else />
+      <TextsAdmin v-else-if="activeTab === 'texts'" />
+      <AnalyticsAdmin v-else />
     </div>
   </section>
 </template>
